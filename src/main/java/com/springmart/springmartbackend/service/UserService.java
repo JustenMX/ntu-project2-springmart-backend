@@ -1,6 +1,7 @@
 package com.springmart.springmartbackend.service;
 
 import com.springmart.springmartbackend.dto.UserDto;
+import com.springmart.springmartbackend.entity.User;
 
 public interface UserService {
 
@@ -9,6 +10,6 @@ public interface UserService {
      * 
      * @param userDto
      */
-    void registerUser(UserDto userDto);
+    User registerUser(UserDto userDto);
 
 }

@@ -1,17 +1,20 @@
 package com.springmart.springmartbackend.service;
 
+import org.springframework.stereotype.Service;
+
 import com.springmart.springmartbackend.dao.UserRepository;
 import com.springmart.springmartbackend.dto.UserDto;
 import com.springmart.springmartbackend.entity.User;
 
 import lombok.AllArgsConstructor;
 
+@Service
 @AllArgsConstructor
 public class UserServiceImplementation implements UserService {
 
     private UserRepository userRepository;
 
-    public void registerUser(UserDto userDto) {
+    public User registerUser(UserDto userDto) {
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
@@ -20,6 +23,6 @@ public class UserServiceImplementation implements UserService {
         user.setAddress(userDto.getAddress());
         user.setOptMarketing(userDto.isOptMarketing());
         user.setJoinDate(userDto.getJoinDate());
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 }
