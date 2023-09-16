@@ -17,7 +17,7 @@ import lombok.Data;
 @Table(name = "user")
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class User {
+public class SpringUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

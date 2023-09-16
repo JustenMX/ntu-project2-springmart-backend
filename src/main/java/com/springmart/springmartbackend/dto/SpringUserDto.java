@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class SpringUserDto {
 
     Long id;
     String email;
