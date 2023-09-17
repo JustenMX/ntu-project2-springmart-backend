@@ -3,7 +3,7 @@ package com.springmart.springmartbackend.service;
 import java.util.List;
 
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
-import com.springmart.springmartbackend.dto.SpringUserUpdate;
+import com.springmart.springmartbackend.dto.SpringUserDto;
 import com.springmart.springmartbackend.entity.SpringUser;
 
 public interface SpringUserService {
@@ -37,7 +37,7 @@ public interface SpringUserService {
      * @param springUserUpdate
      * @return
      */
-    SpringUser updateUser(Long id, SpringUserUpdate springUserUpdate);
+    SpringUser updateUser(Long id, SpringUserDto springUserDto);
 
     /**
      * DELETE USER

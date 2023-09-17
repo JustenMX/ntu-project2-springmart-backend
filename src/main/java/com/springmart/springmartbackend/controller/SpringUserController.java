@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
-import com.springmart.springmartbackend.dto.SpringUserUpdate;
+import com.springmart.springmartbackend.dto.SpringUserDto;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.service.SpringUserServiceImplementation;
 
@@ -75,13 +75,13 @@ public class SpringUserController {
      * UPDATE USER
      * 
      * @param id
-     * @param springUserUpdate
+     * @param springUserDto
      * @return
      */
     @PutMapping("/{id}")
     public ResponseEntity<SpringUser> updateUser(@PathVariable Long id,
-            @RequestBody SpringUserUpdate springUserUpdate) {
-        SpringUser updateUser = springUserService.updateUser(id, springUserUpdate);
+            @RequestBody SpringUserDto springUserDto) {
+        SpringUser updateUser = springUserService.updateUser(id, springUserDto);
         logger.info("Updated user [ID: {}, Name: {} {}]", updateUser.getId(), updateUser.getFirstName());
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }

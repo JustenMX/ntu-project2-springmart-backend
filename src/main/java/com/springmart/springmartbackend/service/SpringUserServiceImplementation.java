@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
-import com.springmart.springmartbackend.dto.SpringUserUpdate;
+import com.springmart.springmartbackend.dto.SpringUserDto;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
 
@@ -59,18 +59,18 @@ public class SpringUserServiceImplementation implements SpringUserService {
      * UPDATE USER
      */
     @Override
-    public SpringUser updateUser(Long id, SpringUserUpdate springUserUpdate) {
+    public SpringUser updateUser(Long id, SpringUserDto springUserDto) {
         SpringUser updateUser = springUserRepository.findById(id)
                 .orElseThrow(() -> new SpringUserNotFoundException(id));
-        updateUser.setEmail(springUserUpdate.getEmail());
-        updateUser.setPassword(springUserUpdate.getPassword());
-        updateUser.setFirstName(springUserUpdate.getFirstName());
-        updateUser.setLastName(springUserUpdate.getLastName());
-        updateUser.setAddress(springUserUpdate.getAddress());
-        updateUser.setPostalCode(springUserUpdate.getPostalCode());
-        updateUser.setUnitNo(springUserUpdate.getUnitNo());
-        updateUser.setOptMarketing(springUserUpdate.isOptMarketing());
-        updateUser.setJoinDate(springUserUpdate.getJoinDate());
+        updateUser.setEmail(springUserDto.getEmail());
+        updateUser.setPassword(springUserDto.getPassword());
+        updateUser.setFirstName(springUserDto.getFirstName());
+        updateUser.setLastName(springUserDto.getLastName());
+        updateUser.setAddress(springUserDto.getAddress());
+        updateUser.setPostalCode(springUserDto.getPostalCode());
+        updateUser.setUnitNo(springUserDto.getUnitNo());
+        updateUser.setOptMarketing(springUserDto.isOptMarketing());
+        updateUser.setJoinDate(springUserDto.getJoinDate());
         return updateUser;
     }
 

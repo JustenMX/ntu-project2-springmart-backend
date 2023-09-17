@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SpringUserUpdate {
+public class SpringUserDto {
     Long id;
     String email;
     String password;
