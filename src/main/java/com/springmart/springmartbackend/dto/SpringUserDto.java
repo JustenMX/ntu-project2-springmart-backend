@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SpringUserDto {
-    Long id;
-    String email;
-    String password;
-    String firstName;
-    String lastName;
-    String address;
-    String postalCode;
-    String unitNo;
-    boolean optMarketing;
-    LocalDate joinDate;
+    private Long id;
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String postalCode;
+    private String unitNo;
+    private boolean optMarketing;
+    private LocalDate joinDate;
 }

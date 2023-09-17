@@ -8,10 +8,11 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ProductDto {
-    Long id;
-    String brand;
-    String label;
-    String description;
-    ProductCategory productCategory;
-    String imgUrl;
+    private Long id;
+    private String brand;
+    private String label;
+    private String description;
+    private double price;
+    private ProductCategory productCategory;
+    private String imgUrl;
 }

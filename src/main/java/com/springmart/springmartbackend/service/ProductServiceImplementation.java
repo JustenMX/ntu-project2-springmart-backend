@@ -25,6 +25,7 @@ public class ProductServiceImplementation implements ProductService {
         product.setBrand(productDto.getBrand());
         product.setLabel(productDto.getLabel());
         product.setDescription(productDto.getDescription());
+        product.setPrice(productDto.getPrice());
         product.setProductCategory(productDto.getProductCategory());
         product.setImgUrl(productDto.getImgUrl());
         return productRepository.save(product);
@@ -54,6 +55,7 @@ public class ProductServiceImplementation implements ProductService {
         updateProduct.setBrand(productDto.getBrand());
         updateProduct.setLabel(productDto.getLabel());
         updateProduct.setDescription(productDto.getDescription());
+        updateProduct.setPrice(productDto.getPrice());
         updateProduct.setProductCategory(productDto.getProductCategory());
         updateProduct.setImgUrl(productDto.getImgUrl());
         return productRepository.save(updateProduct);

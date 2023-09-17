@@ -26,26 +26,30 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     @NotNull(message = "Brand is required")
-    String brand;
+    private String brand;
 
-    @Column(name = "label")
+    @Column(name = "label", nullable = false)
     @NotNull(message = "Label is required")
-    String label;
+    private String label;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     @NotNull(message = "Description is required")
-    String description;
+    private String description;
 
-    @Column(name = "category")
+    @Column(name = "price", nullable = false)
+    @NotNull(message = "Price is required")
+    private Double price;
+
+    @Column(name = "category", nullable = false)
     @NotNull(message = "Category is required")
     @Enumerated(EnumType.STRING)
-    ProductCategory productCategory;
+    private ProductCategory productCategory;
 
-    @Column(name = "img_url")
+    @Column(name = "img_url", nullable = false)
     @NotNull(message = "Image url is required")
-    String imgUrl;
+    private String imgUrl;
 }

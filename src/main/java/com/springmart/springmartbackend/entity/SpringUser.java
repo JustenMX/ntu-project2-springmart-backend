@@ -29,43 +29,43 @@ public class SpringUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
     @NotNull(message = "Email is required")
     @Email(message = "Email should be valid")
-    String email;
+    private String email;
 
     @Column(name = "password", nullable = false)
     @NotNull(message = "Password is required")
-    String password;
+    private String password;
 
     @Column(name = "first_name", nullable = false)
     @NotNull(message = "First name is required")
-    String firstName;
+    private String firstName;
 
     @Column(name = "last_name", nullable = false)
     @NotNull(message = "Last name is required")
-    String lastName;
+    private String lastName;
 
     @Column(name = "address", nullable = false)
     @NotNull(message = "Address is required")
-    String address;
+    private String address;
 
     @Column(name = "postal_code", nullable = false)
     @NotNull(message = "Postalcode is required")
-    String postalCode;
+    private String postalCode;
 
     @Column(name = "unit_no", nullable = false)
     @NotNull(message = "Unit no is required")
-    String unitNo;
+    private String unitNo;
 
     @Column(name = "opt_marketing", nullable = false)
     @NotNull(message = "Opt for marketing is required")
-    boolean optMarketing;
+    private boolean optMarketing;
 
     @Column(name = "join_date", nullable = false)
     @NotNull(message = "Registration date is required")
     @PastOrPresent(message = "Registration date should not be in the future")
-    LocalDate joinDate;
+    private LocalDate joinDate;
 }
