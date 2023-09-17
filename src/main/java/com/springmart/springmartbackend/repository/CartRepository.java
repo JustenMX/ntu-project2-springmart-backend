@@ -1,5 +1,9 @@
 package com.springmart.springmartbackend.repository;
 
-public class CartRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.springmart.springmartbackend.dto.Cart;
+
+public interface CartRepository extends JpaRepository<Cart, Long> {
     
 }
