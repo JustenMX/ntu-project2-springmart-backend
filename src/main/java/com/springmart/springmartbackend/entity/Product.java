@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,18 +29,23 @@ public class Product {
     Long id;
 
     @Column(name = "brand")
+    @NotNull(message = "Brand is required")
     String brand;
 
     @Column(name = "label")
+    @NotNull(message = "Label is required")
     String label;
 
     @Column(name = "description")
+    @NotNull(message = "Description is required")
     String description;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "category")
+    @NotNull(message = "Category is required")
+    @Enumerated(EnumType.STRING)
     ProductCategory productCategory;
 
     @Column(name = "img_url")
+    @NotNull(message = "Image url is required")
     String imgUrl;
 }
