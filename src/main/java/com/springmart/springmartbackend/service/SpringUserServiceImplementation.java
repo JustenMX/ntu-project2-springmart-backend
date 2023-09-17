@@ -41,8 +41,8 @@ public class SpringUserServiceImplementation implements SpringUserService {
      */
     @Override
     public List<SpringUser> getAllUsers() {
-        List<SpringUser> allUsersList = springUserRepository.findAll();
-        return allUsersList;
+        List<SpringUser> allUsers = springUserRepository.findAll();
+        return allUsers;
     }
 
     /**
@@ -56,7 +56,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
     }
 
     /**
-     * USER USER
+     * UPDATE USER
      */
     @Override
     public SpringUser updateUser(Long id, SpringUserUpdate springUserUpdate) {
