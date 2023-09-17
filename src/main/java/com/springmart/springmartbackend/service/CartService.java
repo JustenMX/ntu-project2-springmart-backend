@@ -2,7 +2,7 @@ package com.springmart.springmartbackend.service;
 
 import java.util.ArrayList;
 
-import com.springmart.springmartbackend.dto.Cart;
+import com.springmart.springmartbackend.entity.Cart;
 
 public interface CartService {
 

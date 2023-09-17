@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springmart.springmartbackend.dto.Cart;
+import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
 import com.springmart.springmartbackend.service.CartService;
 import com.stripe.model.Customer;
@@ -30,13 +30,13 @@ public class CartController {
     private CartService cartService;
 
 
-    //Create
+    // Create
     @Autowired
     public CartController(CartService cartService){
         this.cartService = cartService;
     }
 
-    //
+    //Create
     @PostMapping("")
     public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
         Cart newCart = cartService.createCart(cart);
@@ -44,7 +44,7 @@ public class CartController {
     }
 
     //Read (Get All the Carts)
-     @PostMapping("")
+     @GetMapping("")
     public ResponseEntity<ArrayList<Cart>> getAllCart() {
         ArrayList<Cart> allCarts = cartService.getAllCarts();
         return new ResponseEntity<>(allCarts, HttpStatus.OK);

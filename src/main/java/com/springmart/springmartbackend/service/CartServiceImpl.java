@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dto.Cart;
 import com.springmart.springmartbackend.repository.CartRepository;
-import com.stripe.model.Customer;
 
 @Primary
 @Service
