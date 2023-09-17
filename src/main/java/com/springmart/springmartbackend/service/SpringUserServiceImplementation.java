@@ -3,7 +3,7 @@ package com.springmart.springmartbackend.service;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
-import com.springmart.springmartbackend.dto.SpringUserDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.SpringUser;
 
 import lombok.AllArgsConstructor;
@@ -14,17 +14,17 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
     private SpringUserRepository springUserRepository;
 
-    public SpringUser registerUser(SpringUserDto springUserDto) {
+    public SpringUser registerUser(SpringUserRegistration springUserRegistration) {
         SpringUser springUser = new SpringUser();
-        springUser.setEmail(springUserDto.getEmail());
-        springUser.setPassword(springUserDto.getPassword());
-        springUser.setFirstName(springUserDto.getFirstName());
-        springUser.setLastName(springUserDto.getLastName());
-        springUser.setAddress(springUserDto.getAddress());
-        springUser.setPostalCode(springUserDto.getPostalCode());
-        springUser.setUnitNo(springUserDto.getUnitNo());
-        springUser.setOptMarketing(springUserDto.isOptMarketing());
-        springUser.setJoinDate(springUserDto.getJoinDate());
+        springUser.setEmail(springUserRegistration.getEmail());
+        springUser.setPassword(springUserRegistration.getPassword());
+        springUser.setFirstName(springUserRegistration.getFirstName());
+        springUser.setLastName(springUserRegistration.getLastName());
+        springUser.setAddress(springUserRegistration.getAddress());
+        springUser.setPostalCode(springUserRegistration.getPostalCode());
+        springUser.setUnitNo(springUserRegistration.getUnitNo());
+        springUser.setOptMarketing(springUserRegistration.isOptMarketing());
+        springUser.setJoinDate(springUserRegistration.getJoinDate());
         return springUserRepository.save(springUser);
     }
 }

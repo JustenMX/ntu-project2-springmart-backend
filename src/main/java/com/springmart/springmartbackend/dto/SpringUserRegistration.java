@@ -1,11 +1,13 @@
 package com.springmart.springmartbackend.dto;
 
 import java.time.LocalDate;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class SpringUserDto {
-
+@AllArgsConstructor
+public class SpringUserRegistration {
     Long id;
     String email;
     String password;

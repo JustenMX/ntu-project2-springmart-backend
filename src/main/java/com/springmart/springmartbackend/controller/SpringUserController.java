@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springmart.springmartbackend.dto.SpringUserDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.service.SpringUserServiceImplementation;
 
@@ -23,8 +23,7 @@ public class SpringUserController {
     private SpringUserServiceImplementation springUserService;
 
     @PostMapping("register")
-    public ResponseEntity<SpringUser> registerUser(@RequestBody SpringUserDto springUserDto) {
-        return new ResponseEntity<>(springUserService.registerUser(springUserDto), HttpStatus.OK);
+    public ResponseEntity<SpringUser> registerUser(@RequestBody SpringUserRegistration springUserRegistration) {
+        return new ResponseEntity<>(springUserService.registerUser(springUserRegistration), HttpStatus.OK);
     }
-
 }

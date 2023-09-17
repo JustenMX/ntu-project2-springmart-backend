@@ -1,6 +1,6 @@
 package com.springmart.springmartbackend.service;
 
-import com.springmart.springmartbackend.dto.SpringUserDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.SpringUser;
 
 public interface SpringUserService {
@@ -10,6 +10,6 @@ public interface SpringUserService {
      * 
      * @param userDto
      */
-    SpringUser registerUser(SpringUserDto springUserDto);
+    SpringUser registerUser(SpringUserRegistration springUserRegistration);
 
 }
