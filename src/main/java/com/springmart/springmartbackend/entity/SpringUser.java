@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "user")
+@Table(name = "spring_user")
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SpringUser {
@@ -38,6 +38,12 @@ public class SpringUser {
 
     @Column(name = "address")
     String address;
+
+    @Column(name = "postal_code")
+    String postalCode;
+
+    @Column(name = "unit_no")
+    String unitNo;
 
     @Column(name = "opt_marketing")
     boolean optMarketing;

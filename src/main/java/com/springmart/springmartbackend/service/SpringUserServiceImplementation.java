@@ -21,6 +21,8 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setFirstName(springUserDto.getFirstName());
         springUser.setLastName(springUserDto.getLastName());
         springUser.setAddress(springUserDto.getAddress());
+        springUser.setPostalCode(springUserDto.getPostalCode());
+        springUser.setUnitNo(springUserDto.getUnitNo());
         springUser.setOptMarketing(springUserDto.isOptMarketing());
         springUser.setJoinDate(springUserDto.getJoinDate());
         return springUserRepository.save(springUser);

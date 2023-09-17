@@ -12,6 +12,8 @@ public class SpringUserDto {
     String firstName;
     String lastName;
     String address;
+    String postalCode;
+    String unitNo;
     boolean optMarketing;
     LocalDate joinDate;
 }
