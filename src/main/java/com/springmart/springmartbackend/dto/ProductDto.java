@@ -12,7 +12,9 @@ public class ProductDto {
     private String brand;
     private String label;
     private String description;
-    private double price;
+    private double currentPrice;
+    private double originalPrice;
+    private boolean saleItem;
     private ProductCategory productCategory;
     private String imgUrl;
 }
