@@ -1,15 +1,30 @@
 package com.springmart.springmartbackend.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import com.springmart.springmartbackend.dto.CartDto;
 import com.springmart.springmartbackend.entity.Cart;
 
 public interface CartService {
 
-    Cart createCart(Cart cart);
-    Cart getCart(Long id);
-    ArrayList<Cart> getAllCarts();
-    void deleteCart(Long id);
+/**
+ * CREATE CART
+ */
+Cart createCart(CartDto cartDto);
 
-    
+/**
+ * GET CART
+ */
+Cart getCart(Long id);
+
+/**
+ * GET ALL CART
+ */
+List<Cart> getAllCarts();
+
+/**
+ * DELETE CART
+ */
+void deleteCart(Long id);
+
 }

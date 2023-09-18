@@ -1,11 +1,10 @@
 package com.springmart.springmartbackend.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,66 +12,54 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springmart.springmartbackend.dto.CartDto;
 import com.springmart.springmartbackend.entity.Cart;
-import com.springmart.springmartbackend.exception.CartNotFoundException;
-import com.springmart.springmartbackend.service.CartService;
-import com.stripe.model.Customer;
+
+import com.springmart.springmartbackend.service.CartServiceImplementation;
+
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import lombok.AllArgsConstructor;
 
 // import lombok.AllArgsConstructor;
 
+@CrossOrigin(origins = "http://localhost:5173") // npm run dev in local frontend
 @RestController
-@RequestMapping("/cart")
-// @AllArgsConstructor
+@RequestMapping("springmart/api/cart")
+@AllArgsConstructor
 public class CartController {
     
-    private CartService cartService;
+    private CartServiceImplementation cartService;
 
-
-    // Create
-    @Autowired
-    public CartController(CartService cartService){
-        this.cartService = cartService;
-    }
-
-    //Create
-    @PostMapping("")
-    public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
-        Cart newCart = cartService.createCart(cart);
-        return new ResponseEntity<>(newCart, HttpStatus.CREATED);
+    /**
+     * CREATE
+     */
+    @PostMapping
+    public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto) {
+       
+        return new ResponseEntity<>(cartService.createCart(cartDto), HttpStatus.CREATED);
     }
 
     //Read (Get All the Carts)
-     @GetMapping("")
-    public ResponseEntity<ArrayList<Cart>> getAllCart() {
-        ArrayList<Cart> allCarts = cartService.getAllCarts();
+     @GetMapping
+    public ResponseEntity<List<Cart>> getAllCart() {
+        List<Cart> allCarts = cartService.getAllCarts();
         return new ResponseEntity<>(allCarts, HttpStatus.OK);
     }
 
     // Read (GET ONE)
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Cart> getCart(@PathVariable Long id) {
-
-        try {
             Cart foundCart = cartService.getCart(id);
             return new ResponseEntity<>(foundCart, HttpStatus.OK);
-          } catch (CartNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-          }
+       
     }
 
-     @DeleteMapping("{id}")
-    public ResponseEntity<Cart> deleteCart(@PathVariable Long id) {
-        // int index = getCustomerIndex(id);
-        // return customers.remove(index);
+     @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteCart(@PathVariable Long id) {
+      cartService.deleteCart(id);
+            return new ResponseEntity<>(HttpStatus.OK);
 
-        try {
-            cartService.deleteCart(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-          } catch (CartNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-          }
     }
 
 
