@@ -1,5 +1,6 @@
 package com.springmart.springmartbackend.service;
 
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.springmart.springmartbackend.dto.ProductDto;
@@ -45,4 +46,11 @@ public interface ProductService {
      * @param id
      */
     void deleteProduct(Long id);
+
+    /**
+     * IMPORT PRODUCTS FROM CSV
+     * 
+     * @param filePath
+     */
+    void importProductsFromCSV(InputStreamReader reader);
 }

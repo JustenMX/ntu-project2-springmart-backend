@@ -1,14 +1,22 @@
 package com.springmart.springmartbackend.service;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import com.springmart.springmartbackend.dao.ProductRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.Product;
+import com.springmart.springmartbackend.entity.ProductCategory;
 import com.springmart.springmartbackend.exception.ProductNotFoundException;
 
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -16,6 +24,19 @@ import lombok.AllArgsConstructor;
 public class ProductServiceImplementation implements ProductService {
 
     private ProductRepository productRepository;
+
+    @PostConstruct
+    public void importProductsOnStartup() {
+        try {
+            URL url = new URL(
+                    "https://res.cloudinary.com/doniqecd2/raw/upload/v1694967517/SPRINGMART/vwsqgygsm5kfdla3qz6v.csv");
+            URLConnection connection = url.openConnection();
+            InputStreamReader reader = new InputStreamReader(connection.getInputStream());
+            importProductsFromCSV(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * CREATE PRODUCT
@@ -66,6 +87,28 @@ public class ProductServiceImplementation implements ProductService {
      */
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    /**
+     * IMPORT PRODUCTS FROM CSV
+     */
+    public void importProductsFromCSV(InputStreamReader reader) {
+        try (CSVReader csvReader = new CSVReader(reader)) {
+            String[] nextRecord;
+            while ((nextRecord = csvReader.readNext()) != null) {
+                Product product = new Product();
+                product.setBrand(nextRecord[0]);
+                product.setLabel(nextRecord[1]);
+                product.setDescription(nextRecord[2]);
+                product.setPrice(Double.parseDouble(nextRecord[3]));
+                product.setProductCategory(ProductCategory.valueOf(nextRecord[4]));
+                product.setImgUrl(nextRecord[5]);
+
+                productRepository.save(product);
+            }
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
     }
 
 }

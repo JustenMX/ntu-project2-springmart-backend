@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -52,4 +53,19 @@ public class Product {
     @Column(name = "img_url", nullable = false)
     @NotNull(message = "Image url is required")
     private String imgUrl;
+
+    /**
+     * Lombak Builder
+     */
+    @Builder
+    public Product(String brand, String label, String description, Double price,
+            ProductCategory productCategory, String imgUrl) {
+        this.brand = brand;
+        this.label = label;
+        this.description = description;
+        this.price = price;
+        this.productCategory = productCategory;
+        this.imgUrl = imgUrl;
+    }
+
 }

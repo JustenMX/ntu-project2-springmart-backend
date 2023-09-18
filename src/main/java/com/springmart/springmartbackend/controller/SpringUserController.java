@@ -29,7 +29,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/springmart/api/user")
 public class SpringUserController {
 
-    private Logger logger = LoggerFactory.getLogger(SpringUserController.class);
+    private final Logger logger = LoggerFactory.getLogger(SpringUserController.class);
     private SpringUserServiceImplementation springUserService;
 
     /**

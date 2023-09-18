@@ -2,6 +2,7 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SpringUserServiceImplementation implements SpringUserService {
 
+    @Autowired
     private SpringUserRepository springUserRepository;
 
     /**

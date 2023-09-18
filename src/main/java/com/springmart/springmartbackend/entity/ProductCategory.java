@@ -1,7 +1,7 @@
 package com.springmart.springmartbackend.entity;
 
 public enum ProductCategory {
-    BEVERAGE,
+    BEVERAGES,
     FROZEN,
     SNACKS,
     ESSENTIALS,

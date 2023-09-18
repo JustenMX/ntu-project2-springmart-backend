@@ -28,7 +28,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/springmart/api/product")
 public class ProductController {
 
-    private Logger logger = LoggerFactory.getLogger(ProductController.class);
+    private final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private ProductServiceImplementation productService;
 
     /**
