@@ -29,11 +29,9 @@ public class Cart {
     // @Column(name = "spring_user_id")
     // private String springUserId;
 
-    @Column(name = "message", nullable = false)
+    @Column(name = "message")
     private String message;
 
     // private Product cartItem;
 
-    
 }
-

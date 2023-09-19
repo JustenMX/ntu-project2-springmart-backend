@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
+import com.stripe.model.Customer;
 import com.springmart.springmartbackend.dao.CartRepository;
 import com.springmart.springmartbackend.dto.CartDto;
 
@@ -47,6 +48,18 @@ public class CartServiceImplementation implements CartService {
     public List<Cart> getAllCarts() {
         List<Cart> allCarts = cartRepository.findAll();
         return allCarts;
+    }
+
+    @Override
+    public Cart updateCart(Long id, Cart cart) {
+        // retrieve the customer from the database
+        Cart cartToUpdate = cartRepository.findById(id).get();
+        // update the customer retrieved from the database
+        cartToUpdate.setMessage(cart.getMessage());
+
+
+        // save the updated customer back to the database
+        return cartRepository.save(cartToUpdate);
     }
  
 /**

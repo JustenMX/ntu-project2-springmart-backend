@@ -12,6 +12,8 @@ public interface WishListService {
 
     List<WishList> getAllWishList();
 
+    WishList updateWishList(Long id, WishList wishList);
+
     void deleteWishList(Long id);
 
     

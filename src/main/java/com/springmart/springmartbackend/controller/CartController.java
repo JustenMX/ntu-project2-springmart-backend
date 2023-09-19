@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springmart.springmartbackend.dto.CartDto;
 import com.springmart.springmartbackend.entity.Cart;
-
+import com.springmart.springmartbackend.exception.CartNotFoundException;
+import com.springmart.springmartbackend.service.CartService;
 import com.springmart.springmartbackend.service.CartServiceImplementation;
-
+import com.stripe.model.Customer;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;
@@ -29,15 +31,21 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CartController {
     
-    private CartServiceImplementation cartService;
+    private CartService cartService;
 
     /**
      * CREATE
      */
+    // @PostMapping
+    // public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto) {
+    //    Cart newCartDto = cartService.createCart(cartDto);
+    //     return new ResponseEntity<>(newCartDto, HttpStatus.CREATED);
+    // }
+
     @PostMapping
-    public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto) {
-       
-        return new ResponseEntity<>(cartService.createCart(cartDto), HttpStatus.CREATED);
+    public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto){
+        Cart newCartDto = cartService.createCart(cartDto);
+        return new ResponseEntity<Cart>(newCartDto, HttpStatus.CREATED);
     }
 
     //Read (Get All the Carts)
@@ -53,6 +61,18 @@ public class CartController {
             Cart foundCart = cartService.getCart(id);
             return new ResponseEntity<>(foundCart, HttpStatus.OK);
        
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Cart> updateCustomer(@PathVariable Long id, @RequestBody Cart cart) {
+
+        try {
+            Cart updatedCart = cartService.updateCart(id, cart);
+          return new ResponseEntity<>(updatedCart, HttpStatus.OK);
+          } catch (CartNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+          }
+
     }
 
      @DeleteMapping("/{id}")

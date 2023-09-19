@@ -22,6 +22,8 @@ Cart getCart(Long id);
  */
 List<Cart> getAllCarts();
 
+Cart updateCart(Long id, Cart cart);
+
 /**
  * DELETE CART
  */
