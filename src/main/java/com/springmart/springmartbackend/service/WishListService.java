@@ -17,5 +17,4 @@ public interface WishListService {
 
     void deleteWishList(Long id);
 
-    
 }

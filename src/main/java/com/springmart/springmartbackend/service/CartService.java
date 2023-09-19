@@ -7,26 +7,26 @@ import com.springmart.springmartbackend.entity.Cart;
 
 public interface CartService {
 
-/**
- * CREATE CART
- */
-Cart createCart(CartDto cartDto);
+    /**
+     * CREATE CART
+     */
+    Cart createCart(CartDto cartDto);
 
-/**
- * GET CART
- */
-Cart getCart(Long id);
+    /**
+     * GET CART
+     */
+    Cart getCart(Long id);
 
-/**
- * GET ALL CART
- */
-List<Cart> getAllCarts();
+    /**
+     * GET ALL CART
+     */
+    List<Cart> getAllCarts();
 
-Cart updateCart(Long id, Cart cart);
+    Cart updateCart(Long id, Cart cart);
 
-/**
- * DELETE CART
- */
-void deleteCart(Long id);
+    /**
+     * DELETE CART
+     */
+    void deleteCart(Long id);
 
 }

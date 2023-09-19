@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.springmart.springmartbackend.dto.WishListDto;
 
 import com.springmart.springmartbackend.entity.WishList;
