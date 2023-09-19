@@ -33,15 +33,6 @@ public class CartController {
     
     private CartService cartService;
 
-    /**
-     * CREATE
-     */
-    // @PostMapping
-    // public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto) {
-    //    Cart newCartDto = cartService.createCart(cartDto);
-    //     return new ResponseEntity<>(newCartDto, HttpStatus.CREATED);
-    // }
-
     @PostMapping
     public ResponseEntity<Cart> createCart(@RequestBody CartDto cartDto){
         Cart newCartDto = cartService.createCart(cartDto);

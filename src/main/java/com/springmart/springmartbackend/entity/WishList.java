@@ -24,7 +24,7 @@ public class WishList {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "message", nullable = false)
-    private String message;
+    @Column(name = "spring_user_id", nullable = false)
+    private String springUserId;
     
 }
