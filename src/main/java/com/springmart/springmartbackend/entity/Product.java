@@ -50,7 +50,7 @@ public class Product {
 
     @Column(name = "is_sale_item", nullable = false)
     @NotNull(message = "Orignal price is required")
-    private boolean isSaleItem;
+    private boolean saleItem;
 
     @Column(name = "category", nullable = false)
     @NotNull(message = "Category is required")

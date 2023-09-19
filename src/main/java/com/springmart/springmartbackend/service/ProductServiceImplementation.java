@@ -29,7 +29,7 @@ public class ProductServiceImplementation implements ProductService {
     public void importProductsOnStartup() {
         try {
             URL url = new URL(
-                    "https://res.cloudinary.com/doniqecd2/raw/upload/v1694967517/SPRINGMART/vwsqgygsm5kfdla3qz6v.csv");
+                    "https://raw.githubusercontent.com/JustenMX/ntu-project2-springmart-csv/main/springmart-product.csv");
             URLConnection connection = url.openConnection();
             InputStreamReader reader = new InputStreamReader(connection.getInputStream());
             importProductsFromCSV(reader);
@@ -46,7 +46,9 @@ public class ProductServiceImplementation implements ProductService {
         product.setBrand(productDto.getBrand());
         product.setLabel(productDto.getLabel());
         product.setDescription(productDto.getDescription());
-        product.setPrice(productDto.getPrice());
+        product.setCurrentPrice(productDto.getCurrentPrice());
+        product.setOriginalPrice(productDto.getOriginalPrice());
+        product.setSaleItem(productDto.isSaleItem());
         product.setProductCategory(productDto.getProductCategory());
         product.setImgUrl(productDto.getImgUrl());
         return productRepository.save(product);
@@ -76,7 +78,9 @@ public class ProductServiceImplementation implements ProductService {
         updateProduct.setBrand(productDto.getBrand());
         updateProduct.setLabel(productDto.getLabel());
         updateProduct.setDescription(productDto.getDescription());
-        updateProduct.setPrice(productDto.getPrice());
+        updateProduct.setCurrentPrice(productDto.getCurrentPrice());
+        updateProduct.setOriginalPrice(productDto.getOriginalPrice());
+        updateProduct.setSaleItem(productDto.isSaleItem());
         updateProduct.setProductCategory(productDto.getProductCategory());
         updateProduct.setImgUrl(productDto.getImgUrl());
         return productRepository.save(updateProduct);
@@ -94,16 +98,20 @@ public class ProductServiceImplementation implements ProductService {
      */
     public void importProductsFromCSV(InputStreamReader reader) {
         try (CSVReader csvReader = new CSVReader(reader)) {
+            // Skip the header row
+            csvReader.readNext();
+
             String[] nextRecord;
             while ((nextRecord = csvReader.readNext()) != null) {
                 Product product = new Product();
                 product.setBrand(nextRecord[0]);
                 product.setLabel(nextRecord[1]);
                 product.setDescription(nextRecord[2]);
-                product.setPrice(Double.parseDouble(nextRecord[3]));
-                product.setProductCategory(ProductCategory.valueOf(nextRecord[4]));
-                product.setImgUrl(nextRecord[5]);
-
+                product.setCurrentPrice(Double.parseDouble(nextRecord[3]));
+                product.setOriginalPrice(Double.parseDouble(nextRecord[4]));
+                product.setSaleItem(Boolean.parseBoolean(nextRecord[5]));
+                product.setProductCategory(ProductCategory.valueOf(nextRecord[6]));
+                product.setImgUrl(nextRecord[7]);
                 productRepository.save(product);
             }
         } catch (IOException | CsvValidationException e) {

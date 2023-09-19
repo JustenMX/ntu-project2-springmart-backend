@@ -14,7 +14,7 @@ public class ProductDto {
     private String description;
     private double currentPrice;
     private double originalPrice;
-    private boolean isSaleItem;
+    private boolean saleItem;
     private ProductCategory productCategory;
     private String imgUrl;
 }
