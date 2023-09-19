@@ -17,8 +17,7 @@ import com.springmart.springmartbackend.dto.CartDto;
 import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
 import com.springmart.springmartbackend.service.CartService;
-import com.springmart.springmartbackend.service.CartServiceImplementation;
-import com.stripe.model.Customer;
+
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;

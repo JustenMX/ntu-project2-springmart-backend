@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springmart.springmartbackend.dto.CartDto;
+
 import com.springmart.springmartbackend.dto.WishListDto;
-import com.springmart.springmartbackend.entity.Cart;
+
 import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
 import com.springmart.springmartbackend.service.WishListService;

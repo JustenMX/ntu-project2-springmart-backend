@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
-import com.stripe.model.Customer;
 import com.springmart.springmartbackend.dao.CartRepository;
 import com.springmart.springmartbackend.dto.CartDto;
 
