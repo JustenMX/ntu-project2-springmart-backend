@@ -2,7 +2,6 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
-import com.springmart.springmartbackend.dto.CartDto;
 import com.springmart.springmartbackend.entity.Cart;
 
 public interface CartService {
@@ -13,15 +12,7 @@ public interface CartService {
      * @param cartDto
      * @return
      */
-    Cart createCart(CartDto cartDto);
-
-    /**
-     * GET CART
-     * 
-     * @param id
-     * @return
-     */
-    Cart getCart(Long id);
+    Cart createCart(Cart cart);
 
     /**
      * GET ALL CART
@@ -31,19 +22,11 @@ public interface CartService {
     List<Cart> getAllCarts();
 
     /**
-     * UPDATE CART
+     * GET CART
      * 
      * @param id
-     * @param cart
      * @return
      */
-    Cart updateCart(Long id, Cart cart);
-
-    /**
-     * DELETE CART
-     * 
-     * @param id
-     */
-    void deleteCart(Long id);
+    Cart getCart(Long id);
 
 }

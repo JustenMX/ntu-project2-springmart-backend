@@ -5,11 +5,13 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -68,4 +70,10 @@ public class SpringUser {
     @NotNull(message = "Registration date is required")
     @PastOrPresent(message = "Registration date should not be in the future")
     private LocalDate joinDate;
+
+    @OneToOne(mappedBy = "spring_user", cascade = CascadeType.ALL)
+    private WishList wishList;
+
+    @OneToOne(mappedBy = "spring_user", cascade = CascadeType.ALL)
+    private Cart cart;
 }
