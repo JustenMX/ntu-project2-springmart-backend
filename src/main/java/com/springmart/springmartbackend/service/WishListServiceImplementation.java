@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dao.WishListRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.entity.WishList;
-import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
 import com.springmart.springmartbackend.exception.WishListNotFoundException;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +17,6 @@ import lombok.AllArgsConstructor;
 public class WishListServiceImplementation implements WishListService {
 
     private WishListRepository wishListRepository;
-    private SpringUserRepository springUserRepository;
 
     /**
      * CREATE WISHLIST UPON USER REGISTRATION
@@ -27,10 +24,12 @@ public class WishListServiceImplementation implements WishListService {
 
     @Override
     public WishList createWishList(WishList wishList, SpringUserRegistration springUserRegistration) {
-        SpringUser findSpringUser = springUserRepository.findById(springUserRegistration.getId())
-                .orElseThrow(() -> new SpringUserNotFoundException(springUserRegistration.getId()));
+
+        SpringUser springUser = new SpringUser();
+        springUser.setId(springUserRegistration.getId());
+
         WishList newWishList = new WishList();
-        newWishList.setSpringUser(findSpringUser);
+        newWishList.setSpringUser(springUser);
         return wishListRepository.save(newWishList);
     }
 

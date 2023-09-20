@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.controller.SpringUserController;
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.dto.SpringUserDto;
@@ -21,7 +20,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SpringUserServiceImplementation implements SpringUserService {
 
-    private final Logger logger = LoggerFactory.getLogger(SpringUserController.class);
+    private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
     private CartServiceImplementation cartService;
     private WishListServiceImplementation wishListService;
