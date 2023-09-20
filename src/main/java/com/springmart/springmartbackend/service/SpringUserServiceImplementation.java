@@ -42,13 +42,15 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setJoinDate(springUserRegistration.getJoinDate());
         springUser = springUserRepository.save(springUser);
 
-        // CREATE CART
-        Cart cart = new Cart();
-        cartService.createCart(cart, springUserRegistration);
-
-        // CREATE WISHLIST
-        WishList wishList = new WishList();
-        wishListService.createWishList(wishList, springUserRegistration);
+         // CREATE CART
+         Cart cart = new Cart();
+         cart.setSpringUser(springUser);
+         springUser.setCart(cart);
+         
+         // CREATE WISHLIST
+         WishList wishList = new WishList();
+         wishList.setSpringUser(springUser);
+         springUser.setWishList(wishList);
 
         // LOGGER
         logger.info("Added new customer [ID: {}, Name: {}]", springUser.getId(),
