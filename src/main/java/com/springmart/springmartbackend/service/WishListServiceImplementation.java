@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dao.WishListRepository;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
@@ -21,16 +22,16 @@ public class WishListServiceImplementation implements WishListService {
     private SpringUserRepository springUserRepository;
 
     /**
-     * CREATE WISHLIST
+     * CREATE WISHLIST UPON USER REGISTRATION
      */
 
     @Override
-    public WishList createWishList(WishList wishList, Long springuserId) {
-        SpringUser findSpringUser = springUserRepository.findById(springuserId)
-                .orElseThrow(() -> new SpringUserNotFoundException(springuserId));
+    public WishList createWishList(WishList wishList, SpringUserRegistration springUserRegistration) {
+        SpringUser findSpringUser = springUserRepository.findById(springUserRegistration.getId())
+                .orElseThrow(() -> new SpringUserNotFoundException(springUserRegistration.getId()));
         WishList newWishList = new WishList();
         newWishList.setSpringUser(findSpringUser);
-        return newWishList;
+        return wishListRepository.save(newWishList);
     }
 
     /**

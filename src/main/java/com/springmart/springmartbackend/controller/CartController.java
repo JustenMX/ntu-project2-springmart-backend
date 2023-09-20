@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,20 +24,7 @@ import lombok.AllArgsConstructor;
 public class CartController {
 
   private final Logger logger = LoggerFactory.getLogger(CartController.class);
-
   private CartService cartService;
-
-  /**
-   * CREATE CART
-   * 
-   * @param cart
-   * @return
-   */
-  @PostMapping
-  public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
-    logger.info("Added new Cart [ID: {}]", cart.getId());
-    return new ResponseEntity<Cart>(cartService.createCart(cart), HttpStatus.CREATED);
-  }
 
   /**
    * GET ALL CART
