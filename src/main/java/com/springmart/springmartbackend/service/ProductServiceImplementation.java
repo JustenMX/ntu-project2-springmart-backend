@@ -29,7 +29,7 @@ public class ProductServiceImplementation implements ProductService {
     public void importProductsOnStartup() {
         try {
             URL url = new URL(
-                    "https://raw.githubusercontent.com/JustenMX/ntu-project2-springmart-csv/main/springmart-product.csv?token=GHSAT0AAAAAACHSTGR6H4COKEFUUG4XNXDEZIJ3RNA");
+                    "https://raw.githubusercontent.com/JustenMX/ntu-project2-springmart-csv/main/springmart-product.csv");
             URLConnection connection = url.openConnection();
             InputStreamReader reader = new InputStreamReader(connection.getInputStream());
             importProductsFromCSV(reader);

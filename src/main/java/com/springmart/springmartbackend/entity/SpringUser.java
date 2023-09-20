@@ -71,9 +71,10 @@ public class SpringUser {
     @PastOrPresent(message = "Registration date should not be in the future")
     private LocalDate joinDate;
 
-    @OneToOne(mappedBy = "spring_user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
     private WishList wishList;
 
-    @OneToOne(mappedBy = "spring_user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
     private Cart cart;
+
 }

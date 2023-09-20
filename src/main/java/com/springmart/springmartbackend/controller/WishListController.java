@@ -25,7 +25,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("springmart/api/wishlist")
 public class WishListController {
 
-    private Logger logger = LoggerFactory.getLogger(WishListController.class);
+    private final Logger logger = LoggerFactory.getLogger(WishListController.class);
     private WishListService wishListService;
 
     /**

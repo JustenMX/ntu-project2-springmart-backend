@@ -1,14 +1,14 @@
 package com.springmart.springmartbackend.service;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.dto.SpringUserDto;
+import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.entity.SpringUser;
+import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
 
 import lombok.AllArgsConstructor;
@@ -17,11 +17,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SpringUserServiceImplementation implements SpringUserService {
 
-    @Autowired
     private SpringUserRepository springUserRepository;
+    private CartServiceImplementation cartService;
+    private WishListServiceImplementation wishListService;
 
     /**
-     * CREATE USER
+     * CREATE USER (++ CREATE CART, CREATE WISHLIST)
      */
     @Override
     public SpringUser registerUser(SpringUserRegistration springUserRegistration) {
@@ -35,7 +36,18 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setUnitNo(springUserRegistration.getUnitNo());
         springUser.setOptMarketing(springUserRegistration.isOptMarketing());
         springUser.setJoinDate(springUserRegistration.getJoinDate());
-        return springUserRepository.save(springUser);
+
+        springUser = springUserRepository.save(springUser);
+
+        // CREATE CART
+        Cart cart = new Cart();
+        cartService.createCart(cart);
+
+        // CREATE WISHLIST
+        WishList wishList = new WishList();
+        wishListService.createWishList(wishList);
+
+        return springUser;
     }
 
     /**
