@@ -35,8 +35,8 @@ public class WishListController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<WishList> createWishList(@RequestBody WishList wishList) {
-        WishList newWishList = wishListService.createWishList(wishList);
+    public ResponseEntity<WishList> createWishList(@RequestBody WishList wishList, Long springuserId) {
+        WishList newWishList = wishListService.createWishList(wishList, springuserId);
         logger.info("Added new WishList [ID: {}]", wishList.getId());
         return new ResponseEntity<WishList>(newWishList, HttpStatus.CREATED);
     }

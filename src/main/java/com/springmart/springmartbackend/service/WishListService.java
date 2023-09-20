@@ -12,7 +12,7 @@ public interface WishListService {
      * @param wishList
      * @return
      */
-    WishList createWishList(WishList wishList);
+    WishList createWishList(WishList wishList, Long springuserId);
 
     /**
      * GET ALL WISHLIST

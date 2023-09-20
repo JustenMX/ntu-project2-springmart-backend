@@ -45,7 +45,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
         // CREATE WISHLIST
         WishList wishList = new WishList();
-        wishListService.createWishList(wishList);
+        wishListService.createWishList(wishList, springUser.getId());
 
         return springUser;
     }
