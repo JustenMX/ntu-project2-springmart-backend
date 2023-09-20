@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.WishListRepository;
-import com.springmart.springmartbackend.dto.WishListDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
+import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.entity.WishList;
-import com.springmart.springmartbackend.exception.CartNotFoundException;
+import com.springmart.springmartbackend.exception.WishListNotFoundException;
 
 import lombok.AllArgsConstructor;
 
@@ -18,27 +19,22 @@ public class WishListServiceImplementation implements WishListService {
     private WishListRepository wishListRepository;
 
     /**
-     * CREATE CART
+     * CREATE WISHLIST UPON USER REGISTRATION
      */
 
     @Override
-    public WishList createWishList(WishListDto wishListDto) {
+    public WishList createWishList(WishList wishList, SpringUserRegistration springUserRegistration) {
+
+        SpringUser springUser = new SpringUser();
+        springUser.setId(springUserRegistration.getId());
+
         WishList newWishList = new WishList();
-        newWishList.setSpringUserId(wishListDto.getSpringUserId());
+        newWishList.setSpringUser(springUser);
         return wishListRepository.save(newWishList);
     }
 
     /**
-     * GET CART
-     */
-    @Override
-    public WishList getWishList(Long id) {
-        WishList foundWishList = wishListRepository.findById(id).orElseThrow(() -> new CartNotFoundException(id));
-        return foundWishList;
-    }
-
-    /**
-     * GET ALL WISHLIST (ADMIN PORTAL)
+     * GET ALL WISHLIST
      */
     @Override
     public List<WishList> getAllWishList() {
@@ -47,26 +43,12 @@ public class WishListServiceImplementation implements WishListService {
     }
 
     /**
-     * UPDATE WISHLIST (ADMIN PORTAL)
-     */
-
-    @Override
-    public WishList updateWishList(Long id, WishListDto wishListDto) {
-        // retrieve the customer from the database
-        WishList wishListToUpdate = wishListRepository.findById(id).get();
-        // update the customer retrieved from the database
-        wishListToUpdate.setSpringUserId(wishListDto.getSpringUserId());
-
-        // save the updated customer back to the database
-        return wishListRepository.save(wishListToUpdate);
-    }
-
-    /**
-     * DELETE CART
+     * GET WISHLIST
      */
     @Override
-    public void deleteWishList(Long id) {
-        wishListRepository.deleteById(id);
+    public WishList getWishList(Long id) {
+        WishList foundWishList = wishListRepository.findById(id).orElseThrow(() -> new WishListNotFoundException(id));
+        return foundWishList;
     }
 
 }

@@ -2,13 +2,16 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.dto.SpringUserDto;
+import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.entity.SpringUser;
+import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
 
 import lombok.AllArgsConstructor;
@@ -17,11 +20,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SpringUserServiceImplementation implements SpringUserService {
 
-    @Autowired
+    private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
+    private CartServiceImplementation cartService;
+    private WishListServiceImplementation wishListService;
 
     /**
-     * CREATE USER
+     * CREATE USER (++ CREATE CART, CREATE WISHLIST)
      */
     @Override
     public SpringUser registerUser(SpringUserRegistration springUserRegistration) {
@@ -35,6 +40,19 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setUnitNo(springUserRegistration.getUnitNo());
         springUser.setOptMarketing(springUserRegistration.isOptMarketing());
         springUser.setJoinDate(springUserRegistration.getJoinDate());
+        springUser = springUserRepository.save(springUser);
+
+        // CREATE CART
+        Cart cart = new Cart();
+        cartService.createCart(cart, springUserRegistration);
+
+        // CREATE WISHLIST
+        WishList wishList = new WishList();
+        wishListService.createWishList(wishList, springUserRegistration);
+
+        // LOGGER
+        logger.info("Added new customer [ID: {}, Name: {}]", springUser.getId(),
+                springUser.getFirstName());
         return springUserRepository.save(springUser);
     }
 
@@ -44,6 +62,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
     @Override
     public List<SpringUser> getAllUsers() {
         List<SpringUser> allUsers = springUserRepository.findAll();
+        logger.info("Retrieved {} users successfully", allUsers.size());
         return allUsers;
     }
 
@@ -54,6 +73,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
     public SpringUser getUser(Long id) {
         SpringUser springUser = springUserRepository.findById(id)
                 .orElseThrow(() -> new SpringUserNotFoundException(id));
+        logger.info("Retrieved user [ID: {}, Name: {}] successfully", springUser.getId(), springUser.getFirstName());
         return springUser;
     }
 
@@ -73,6 +93,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
         updateUser.setUnitNo(springUserDto.getUnitNo());
         updateUser.setOptMarketing(springUserDto.isOptMarketing());
         updateUser.setJoinDate(springUserDto.getJoinDate());
+        logger.info("Updated user [ID: {}, Name: {} {}]", updateUser.getId(), updateUser.getFirstName());
         return updateUser;
     }
 
@@ -81,6 +102,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
      */
     @Override
     public void deleteUser(Long id) {
+        logger.info("Deleted user with ID: {}", id);
         springUserRepository.deleteById(id);
     }
 }
