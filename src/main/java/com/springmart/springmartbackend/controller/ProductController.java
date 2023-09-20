@@ -57,7 +57,7 @@ public class ProductController {
     }
 
     /**
-     * GET ALL PRODUCTS
+     * GET PRODUCT
      * 
      * @param id
      * @return

@@ -29,4 +29,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(CartNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCartNotFoundException(CartNotFoundException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage(), LocalDateTime.now());
+        logger.error("CartNotFoundException Occurred:", errorResponse);
+        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(WishListNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleWishListNotFound(WishListNotFoundException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage(), LocalDateTime.now());
+        logger.error("WishListNotFoundException Occurred:", errorResponse);
+        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
 }

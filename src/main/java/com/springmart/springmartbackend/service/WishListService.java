@@ -2,20 +2,32 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
-import com.springmart.springmartbackend.dto.WishListDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.WishList;
 
 public interface WishListService {
 
-    WishList createWishList(WishListDto wishListDto);
+    /**
+     * CREATE WISHLIST UPON USER REGISTRATION
+     * 
+     * @param wishList
+     * @return
+     */
+    WishList createWishList(WishList wishList, SpringUserRegistration springUserRegistration);
 
-    WishList getWishList(Long id);
-
+    /**
+     * GET ALL WISHLIST
+     * 
+     * @return
+     */
     List<WishList> getAllWishList();
 
-    WishList updateWishList(Long id, WishListDto wishListDto);
+    /**
+     * GET WISHLIST
+     * 
+     * @param id
+     * @return
+     */
+    WishList getWishList(Long id);
 
-    void deleteWishList(Long id);
-
-    
 }

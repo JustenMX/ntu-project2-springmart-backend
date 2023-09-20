@@ -2,31 +2,32 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
-import com.springmart.springmartbackend.dto.CartDto;
+import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.Cart;
 
 public interface CartService {
 
-/**
- * CREATE CART
- */
-Cart createCart(CartDto cartDto);
+    /**
+     * CREATE CART UPON USER REGISTRATION
+     * 
+     * @param cartDto
+     * @return
+     */
+    Cart createCart(Cart cart, SpringUserRegistration springUserRegistration);
 
-/**
- * GET CART
- */
-Cart getCart(Long id);
+    /**
+     * GET ALL CART
+     * 
+     * @return
+     */
+    List<Cart> getAllCarts();
 
-/**
- * GET ALL CART
- */
-List<Cart> getAllCarts();
-
-Cart updateCart(Long id, Cart cart);
-
-/**
- * DELETE CART
- */
-void deleteCart(Long id);
+    /**
+     * GET CART
+     * 
+     * @param id
+     * @return
+     */
+    Cart getCart(Long id);
 
 }

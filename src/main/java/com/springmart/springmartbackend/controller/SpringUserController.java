@@ -2,8 +2,6 @@ package com.springmart.springmartbackend.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +27,6 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/springmart/api/user")
 public class SpringUserController {
 
-    private final Logger logger = LoggerFactory.getLogger(SpringUserController.class);
     private SpringUserServiceImplementation springUserService;
 
     /**
@@ -40,8 +37,6 @@ public class SpringUserController {
      */
     @PostMapping("/register")
     public ResponseEntity<SpringUser> registerUser(@RequestBody SpringUserRegistration springUserRegistration) {
-        logger.info("Added new customer [ID: {}, Name: {}]", springUserRegistration.getId(),
-                springUserRegistration.getFirstName());
         return new ResponseEntity<>(springUserService.registerUser(springUserRegistration), HttpStatus.OK);
     }
 
@@ -53,7 +48,6 @@ public class SpringUserController {
     @GetMapping
     public ResponseEntity<List<SpringUser>> getAllUsers() {
         List<SpringUser> allUsers = springUserService.getAllUsers();
-        logger.info("Retrieved {} users successfully", allUsers.size());
         return new ResponseEntity<>(allUsers, HttpStatus.OK);
 
     }
@@ -67,7 +61,6 @@ public class SpringUserController {
     @GetMapping("/{id}")
     public ResponseEntity<SpringUser> getUser(@PathVariable Long id) {
         SpringUser springUser = springUserService.getUser(id);
-        logger.info("Retrieved user [ID: {}, Name: {}] successfully", springUser.getId(), springUser.getFirstName());
         return new ResponseEntity<>(springUser, HttpStatus.OK);
     }
 
@@ -82,7 +75,6 @@ public class SpringUserController {
     public ResponseEntity<SpringUser> updateUser(@PathVariable Long id,
             @RequestBody SpringUserDto springUserDto) {
         SpringUser updateUser = springUserService.updateUser(id, springUserDto);
-        logger.info("Updated user [ID: {}, Name: {} {}]", updateUser.getId(), updateUser.getFirstName());
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
@@ -95,7 +87,6 @@ public class SpringUserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
         springUserService.deleteUser(id);
-        logger.info("Deleted user with ID: {}", id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
