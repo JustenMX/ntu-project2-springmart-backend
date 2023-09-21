@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CartDto {
-
-    private Long id;
-
+public class SpringUserAuthDto {
+    private String email;
+    private String password;
 }
