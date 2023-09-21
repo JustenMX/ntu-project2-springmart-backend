@@ -822,3 +822,299 @@ java.lang.IllegalArgumentException: The given id must not be null
 2023-09-22T03:31:16.037+08:00  INFO 39310 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-09-22T03:31:16.038+08:00  INFO 39310 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
 2023-09-22T03:31:16.039+08:00  INFO 39310 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-09-22T04:04:31.788+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:04:31.790+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:04:31.810+08:00  INFO 43467 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-22T04:04:31.810+08:00  INFO 43467 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-22T04:04:32.084+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:04:32.116+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:04:32.391+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:04:32.396+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:04:32.396+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:04:32.428+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:04:32.428+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 618 ms
+2023-09-22T04:04:32.513+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:04:32.539+08:00  INFO 43467 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-22T04:04:32.540+08:00  INFO 43467 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-22T04:04:32.596+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:04:32.659+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:04:32.666+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-22T04:04:32.720+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e0f586a
+2023-09-22T04:04:32.721+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-22T04:04:32.852+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:04:33.193+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:04:33.270+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:04:34.125+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:04:34.246+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6a17a4ef, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44f5e686, org.springframework.security.web.context.SecurityContextHolderFilter@5f742ccc, org.springframework.security.web.header.HeaderWriterFilter@470cccb3, org.springframework.security.web.authentication.logout.LogoutFilter@d7ef0cd, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4554328, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@529bf174, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11a3c436, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bf09708, org.springframework.security.web.access.ExceptionTranslationFilter@5131deb7, org.springframework.security.web.access.intercept.AuthorizationFilter@1777de53]
+2023-09-22T04:04:34.352+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:04:34.365+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:04:34.371+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 2.749 seconds (process running for 2.941)
+2023-09-22T04:04:49.950+08:00  INFO 43467 --- [http-nio-9090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-22T04:04:49.950+08:00  INFO 43467 --- [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-22T04:04:49.951+08:00  INFO 43467 --- [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-22T04:05:04.164+08:00  INFO 43467 --- [http-nio-9090-exec-3] c.s.s.s.SpringUserServiceImplementation  : Added new customer [ID: 1, Name: Justen]
+2023-09-22T04:07:11.716+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2023-09-22T04:07:11.721+08:00  INFO 43467 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:07:11.722+08:00  INFO 43467 --- [Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-09-22T04:07:11.730+08:00  INFO 43467 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:07:11.733+08:00  INFO 43467 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-22T04:07:11.734+08:00  INFO 43467 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-22T04:07:11.774+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:07:11.774+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:07:11.838+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:07:11.846+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:07:11.898+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:07:11.898+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:07:11.898+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:07:11.905+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:07:11.906+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 131 ms
+2023-09-22T04:07:11.927+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:07:11.929+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:07:11.929+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:07:11.930+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-09-22T04:07:11.938+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@6e12202b
+2023-09-22T04:07:11.938+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-09-22T04:07:11.954+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:07:11.993+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:07:12.044+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:07:12.203+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:07:12.238+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77f28be9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ed549c4, org.springframework.security.web.context.SecurityContextHolderFilter@5f08683d, org.springframework.security.web.header.HeaderWriterFilter@153e3c38, org.springframework.security.web.authentication.logout.LogoutFilter@53eacc02, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@727dd378, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b9af45a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b843afc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@316b2b6a, org.springframework.security.web.access.ExceptionTranslationFilter@4a35497c, org.springframework.security.web.access.intercept.AuthorizationFilter@45175ade]
+2023-09-22T04:07:12.262+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:07:12.270+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:07:12.272+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.508 seconds (process running for 160.842)
+2023-09-22T04:07:12.273+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:08:54.930+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:08:54.940+08:00  INFO 43467 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:08:54.953+08:00  INFO 43467 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:08:54.954+08:00  INFO 43467 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-09-22T04:08:54.954+08:00  INFO 43467 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-09-22T04:08:54.995+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:08:54.995+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:08:55.055+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:08:55.063+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:08:55.115+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:08:55.115+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:08:55.115+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:08:55.120+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:08:55.120+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 124 ms
+2023-09-22T04:08:55.141+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:08:55.143+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:08:55.143+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:08:55.144+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-09-22T04:08:55.152+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@1c6cf472
+2023-09-22T04:08:55.153+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-09-22T04:08:55.169+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:08:55.204+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:08:55.257+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:08:55.431+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:08:55.468+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6bf5682a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e3a3d90, org.springframework.security.web.context.SecurityContextHolderFilter@61a302d1, org.springframework.security.web.header.HeaderWriterFilter@49282587, org.springframework.security.web.authentication.logout.LogoutFilter@54a98ed7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@73328fad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@59e2c76b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25e9a917, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e821d49, org.springframework.security.web.access.ExceptionTranslationFilter@74e102d2, org.springframework.security.web.access.intercept.AuthorizationFilter@737671d7]
+2023-09-22T04:08:55.492+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:08:55.496+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:08:55.498+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.512 seconds (process running for 264.067)
+2023-09-22T04:08:55.499+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:09:16.142+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:09:16.149+08:00  INFO 43467 --- [Thread-11] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:09:16.155+08:00  INFO 43467 --- [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:16.155+08:00  INFO 43467 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-09-22T04:09:16.157+08:00  INFO 43467 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-09-22T04:09:16.197+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:09:16.198+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:09:16.251+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:09:16.257+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:09:16.302+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:09:16.302+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:09:16.302+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:09:16.307+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:09:16.307+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 109 ms
+2023-09-22T04:09:16.328+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:09:16.330+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:16.330+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:09:16.330+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-09-22T04:09:16.341+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@157750b3
+2023-09-22T04:09:16.341+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-09-22T04:09:16.358+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:16.389+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:09:16.435+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:16.634+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:09:16.669+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3f59a7d5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@317f5167, org.springframework.security.web.context.SecurityContextHolderFilter@4a0940b2, org.springframework.security.web.header.HeaderWriterFilter@6ef4bdab, org.springframework.security.web.authentication.logout.LogoutFilter@2cb86cad, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@506b6471, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ebbd872, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67e655fb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c5900ee, org.springframework.security.web.access.ExceptionTranslationFilter@19700698, org.springframework.security.web.access.intercept.AuthorizationFilter@597c8cfa]
+2023-09-22T04:09:16.693+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:09:16.697+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:09:16.699+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.51 seconds (process running for 285.268)
+2023-09-22T04:09:16.700+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:09:30.237+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:09:30.243+08:00  INFO 43467 --- [Thread-15] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:09:30.250+08:00  INFO 43467 --- [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:30.250+08:00  INFO 43467 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-09-22T04:09:30.252+08:00  INFO 43467 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-09-22T04:09:30.295+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:09:30.295+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:09:30.343+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:09:30.348+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:09:30.391+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:09:30.392+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:09:30.392+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:09:30.396+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:09:30.396+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 100 ms
+2023-09-22T04:09:30.417+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:09:30.419+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:30.419+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:09:30.419+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2023-09-22T04:09:30.439+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@57281780
+2023-09-22T04:09:30.439+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2023-09-22T04:09:30.454+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:30.483+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:09:30.553+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:30.705+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:09:30.740+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5233d2fc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69e7236e, org.springframework.security.web.context.SecurityContextHolderFilter@61d57fe, org.springframework.security.web.header.HeaderWriterFilter@24cda6d9, org.springframework.security.web.authentication.logout.LogoutFilter@4777fab9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2ae9572a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@788910ef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@620b6361, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20c73e98, org.springframework.security.web.access.ExceptionTranslationFilter@47fbac6b, org.springframework.security.web.access.intercept.AuthorizationFilter@4e60f123]
+2023-09-22T04:09:30.765+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:09:30.769+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:09:30.771+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.485 seconds (process running for 299.34)
+2023-09-22T04:09:30.772+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:09:38.249+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:09:38.257+08:00  INFO 43467 --- [Thread-19] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:09:38.264+08:00  INFO 43467 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:38.265+08:00  INFO 43467 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2023-09-22T04:09:38.271+08:00  INFO 43467 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2023-09-22T04:09:38.313+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:09:38.313+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:09:38.369+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:09:38.376+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:09:38.423+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:09:38.423+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:09:38.423+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:09:38.428+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:09:38.428+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 114 ms
+2023-09-22T04:09:38.451+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:09:38.453+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:38.453+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:09:38.453+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2023-09-22T04:09:38.458+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@5d8332fe
+2023-09-22T04:09:38.458+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2023-09-22T04:09:38.480+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:38.507+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:09:38.560+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:39.044+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:09:39.080+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2dc99066, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f66e85f, org.springframework.security.web.context.SecurityContextHolderFilter@4a71f640, org.springframework.security.web.header.HeaderWriterFilter@444ae442, org.springframework.security.web.authentication.logout.LogoutFilter@325bfa0, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3bff70e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48a0fe3a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@555804df, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64b61fac, org.springframework.security.web.access.ExceptionTranslationFilter@2c963e77, org.springframework.security.web.access.intercept.AuthorizationFilter@59505b64]
+2023-09-22T04:09:39.104+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:09:39.109+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:09:39.111+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.807 seconds (process running for 307.68)
+2023-09-22T04:09:39.112+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:09:51.673+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:09:51.675+08:00  INFO 43467 --- [Thread-23] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:09:51.677+08:00  INFO 43467 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:51.677+08:00  INFO 43467 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2023-09-22T04:09:51.678+08:00  INFO 43467 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2023-09-22T04:09:51.712+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:09:51.712+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:09:51.760+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:09:51.766+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:09:51.809+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:09:51.809+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:09:51.809+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:09:51.814+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:09:51.814+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 101 ms
+2023-09-22T04:09:51.837+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:09:51.838+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:51.839+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:09:51.839+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2023-09-22T04:09:51.844+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@6bcf1169
+2023-09-22T04:09:51.844+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2023-09-22T04:09:51.861+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:09:51.887+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:09:51.947+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:09:52.100+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:09:52.133+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3af5322, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@235bbc10, org.springframework.security.web.context.SecurityContextHolderFilter@3b8e5b1d, org.springframework.security.web.header.HeaderWriterFilter@6d8866ad, org.springframework.security.web.authentication.logout.LogoutFilter@666192e6, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@69b30a50, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cac1fd1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1edd129, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33239523, org.springframework.security.web.access.ExceptionTranslationFilter@5251e9a4, org.springframework.security.web.access.intercept.AuthorizationFilter@3504bd8d]
+2023-09-22T04:09:52.157+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:09:52.161+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:09:52.163+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.459 seconds (process running for 320.732)
+2023-09-22T04:09:52.164+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:10:13.820+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:10:13.825+08:00  INFO 43467 --- [Thread-27] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:10:13.830+08:00  INFO 43467 --- [Thread-27] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:10:13.831+08:00  INFO 43467 --- [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2023-09-22T04:10:13.832+08:00  INFO 43467 --- [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2023-09-22T04:10:13.873+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:10:13.873+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:10:13.919+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:10:13.925+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:10:13.968+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:10:13.968+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:10:13.968+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:10:13.972+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:10:13.973+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 99 ms
+2023-09-22T04:10:13.994+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:10:13.995+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:10:13.995+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:10:13.995+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2023-09-22T04:10:14.005+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection org.postgresql.jdbc.PgConnection@61711670
+2023-09-22T04:10:14.005+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2023-09-22T04:10:14.022+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:10:14.047+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:10:14.090+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:10:14.237+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:10:14.270+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2741167a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f71ad1b, org.springframework.security.web.context.SecurityContextHolderFilter@408ec383, org.springframework.security.web.header.HeaderWriterFilter@4d72bef4, org.springframework.security.web.authentication.logout.LogoutFilter@1f2911ea, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@70b0ffc7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b4218e1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71d0d853, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7aad8ac3, org.springframework.security.web.access.ExceptionTranslationFilter@33e1393b, org.springframework.security.web.access.intercept.AuthorizationFilter@3392dd73]
+2023-09-22T04:10:14.294+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:10:14.299+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:10:14.301+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.437 seconds (process running for 342.869)
+2023-09-22T04:10:14.301+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:10:24.813+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:10:24.818+08:00  INFO 43467 --- [Thread-31] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:10:24.824+08:00  INFO 43467 --- [Thread-31] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:10:24.825+08:00  INFO 43467 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2023-09-22T04:10:24.826+08:00  INFO 43467 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2023-09-22T04:10:24.871+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:10:24.871+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:10:24.916+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:10:24.922+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:10:24.964+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:10:24.964+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:10:24.964+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:10:24.969+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:10:24.969+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 97 ms
+2023-09-22T04:10:24.989+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:10:24.991+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:10:24.991+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:10:24.991+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2023-09-22T04:10:25.003+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection org.postgresql.jdbc.PgConnection@11b2f9e2
+2023-09-22T04:10:25.003+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2023-09-22T04:10:25.018+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:10:25.043+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:10:25.088+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:10:25.231+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:10:25.265+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1d6f9e8d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1c72002, org.springframework.security.web.context.SecurityContextHolderFilter@329de390, org.springframework.security.web.header.HeaderWriterFilter@1358ba42, org.springframework.security.web.authentication.logout.LogoutFilter@6ee2d8a2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@65b06d51, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4afec326, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65621062, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f70036e, org.springframework.security.web.access.ExceptionTranslationFilter@6878f972, org.springframework.security.web.access.intercept.AuthorizationFilter@272d3a9e]
+2023-09-22T04:10:25.288+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:10:25.293+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:10:25.295+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.432 seconds (process running for 353.863)
+2023-09-22T04:10:25.295+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:11:26.452+08:00  INFO 43467 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-09-22T04:11:26.457+08:00  INFO 43467 --- [Thread-35] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-09-22T04:11:26.463+08:00  INFO 43467 --- [Thread-35] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:11:26.463+08:00  INFO 43467 --- [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2023-09-22T04:11:26.464+08:00  INFO 43467 --- [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2023-09-22T04:11:26.509+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 43467 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:11:26.509+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:11:26.558+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:11:26.564+08:00  INFO 43467 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:11:26.607+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:11:26.608+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:11:26.608+08:00  INFO 43467 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:11:26.612+08:00  INFO 43467 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:11:26.612+08:00  INFO 43467 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 101 ms
+2023-09-22T04:11:26.634+08:00  INFO 43467 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:11:26.635+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:11:26.635+08:00  INFO 43467 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:11:26.635+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2023-09-22T04:11:26.642+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection org.postgresql.jdbc.PgConnection@24fab0e9
+2023-09-22T04:11:26.642+08:00  INFO 43467 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2023-09-22T04:11:26.656+08:00  INFO 43467 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:11:26.681+08:00  INFO 43467 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:11:26.730+08:00  INFO 43467 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:11:26.880+08:00  WARN 43467 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:11:26.915+08:00  INFO 43467 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b5a784, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f293300, org.springframework.security.web.context.SecurityContextHolderFilter@389b9ef7, org.springframework.security.web.header.HeaderWriterFilter@5a43c760, org.springframework.security.web.authentication.logout.LogoutFilter@3703ca94, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2f4b8f93, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@511d0364, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@17b72775, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38b8e370, org.springframework.security.web.access.ExceptionTranslationFilter@3cff5260, org.springframework.security.web.access.intercept.AuthorizationFilter@201eeb0e]
+2023-09-22T04:11:26.939+08:00  INFO 43467 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:11:26.944+08:00  INFO 43467 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:11:26.945+08:00  INFO 43467 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 0.445 seconds (process running for 415.514)
+2023-09-22T04:11:26.946+08:00  INFO 43467 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-09-22T04:11:49.611+08:00  INFO 43467 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:11:49.611+08:00  INFO 43467 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2023-09-22T04:11:49.612+08:00  INFO 43467 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
