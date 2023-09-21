@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SpringUserDto {
     private Long id;
     private String email;

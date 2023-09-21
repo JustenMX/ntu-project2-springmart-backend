@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ProductDto {
     private Long id;
     private String brand;
