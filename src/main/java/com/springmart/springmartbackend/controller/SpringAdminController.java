@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/springmart/api/admin")
 public class SpringAdminController {
 
-    @GetMapping
+    @GetMapping("/hello")
     public String helloSpringAdminController() {
         return "Springmart Admin Level Access";
     }

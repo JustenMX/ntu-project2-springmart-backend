@@ -29,7 +29,7 @@ public class SpringUserController {
 
     private SpringUserServiceImplementation springUserService;
 
-    @GetMapping
+    @GetMapping("/hello")
     public String helloSpringUserController() {
         return "Springmart User Level Access";
     }
