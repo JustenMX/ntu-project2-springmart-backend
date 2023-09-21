@@ -14,7 +14,7 @@ public interface WishListItemService {
      * @return
      */
 
-    WishListItem createWishList(WishListItem wishListItem, WishList WishList);
+    WishListItem createWishListItem(WishListItem wishListItem);
 
     /**
      * GET ALL WISHLIST ITEMS FOR ADMIN
@@ -30,7 +30,7 @@ public interface WishListItemService {
      * 
      * @return
      */
-    WishList getWishList(Long id);
+    WishListItem getWishListItem(Long id);
 
      /**
      * GET WISHLIST ITEM BASE ON THE USERID/WISHLISTID
@@ -38,14 +38,6 @@ public interface WishListItemService {
      * @return
      */
 
-
-    /**
-     * UPDATE WISHLIST ITEM BASE ON THE ID
-     * 
-     * @return
-     */
-
-    WishListItem updateWishListItem(Long id, WishListItem wishListItem);
 
 
     /**
