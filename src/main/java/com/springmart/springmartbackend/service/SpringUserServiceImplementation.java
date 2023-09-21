@@ -22,8 +22,6 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
     private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
-    private CartServiceImplementation cartService;
-    private WishListServiceImplementation wishListService;
 
     /**
      * CREATE USER (++ CREATE CART, CREATE WISHLIST)
@@ -44,15 +42,18 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
         // CREATE CART
         Cart cart = new Cart();
-        cartService.createCart(cart, springUserRegistration);
+        cart.setSpringUser(springUser);
+        springUser.setCart(cart);
 
         // CREATE WISHLIST
         WishList wishList = new WishList();
-        wishListService.createWishList(wishList, springUserRegistration);
+        wishList.setSpringUser(springUser);
+        springUser.setWishList(wishList);
 
         // LOGGER
         logger.info("Added new customer [ID: {}, Name: {}]", springUser.getId(),
                 springUser.getFirstName());
+
         return springUserRepository.save(springUser);
     }
 
