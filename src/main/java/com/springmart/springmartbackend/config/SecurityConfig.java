@@ -9,11 +9,22 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.springmart.springmartbackend.utils.RSAKeyProperties;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfig {
+
+    private final RSAKeyProperties keys;
+
+    public SecurityConfig(RSAKeyProperties keys) {
+        this.keys = keys;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -38,6 +49,11 @@ public class SecurityConfig {
                 })
                 .httpBasic(withDefaults())
                 .build();
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        return NimbusJwtDecoder.withPublicKey(keys.getPublicKey()).build();
     }
 
 }
