@@ -31,7 +31,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/springmart/api/user/registration").permitAll();
+                    auth.requestMatchers("/springmart/api/userauth/authenticate").permitAll();
+                    auth.anyRequest().authenticated();
+                })
                 .httpBasic(withDefaults())
                 .build();
     }

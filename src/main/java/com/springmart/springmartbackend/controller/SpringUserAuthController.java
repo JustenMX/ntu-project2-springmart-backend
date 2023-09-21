@@ -33,6 +33,12 @@ public class SpringUserAuthController {
         return new ResponseEntity<>(springUserAuthService.getAllSpringUserAuth(), HttpStatus.OK);
     }
 
+    /**
+     * GET SPRING USER AUTH
+     * 
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public ResponseEntity<SpringUserAuth> getSpringUserAuth(@PathVariable Long id) {
         return new ResponseEntity<>(springUserAuthService.getSpringUserAuth(id), HttpStatus.OK);
