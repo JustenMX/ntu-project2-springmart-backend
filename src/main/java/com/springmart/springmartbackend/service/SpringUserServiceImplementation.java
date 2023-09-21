@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.springmart.springmartbackend.dao.RoleRepository;
 import com.springmart.springmartbackend.dao.SpringUserAuthRepository;
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
@@ -28,6 +29,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
     private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
     private SpringUserAuthRepository springUserAuthRepository;
+    private RoleRepository roleRepository;
 
     /**
      * CREATE USER (++ CREATE CART, CREATE WISHLIST)
@@ -68,6 +70,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
         // SET DEFAULT ROLES
         Set<Role> roles = new HashSet<>();
         roles.add(new Role(null, "USER"));
+        roleRepository.saveAll(roles);
         springUserAuth.setAuthorities(roles);
 
         springUserAuth = springUserAuthRepository.save(springUserAuth);
