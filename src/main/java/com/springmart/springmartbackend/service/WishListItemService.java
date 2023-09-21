@@ -2,6 +2,7 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
+import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.entity.WishListItem;
 
@@ -14,7 +15,7 @@ public interface WishListItemService {
      * @return
      */
 
-    WishListItem createWishListItem(WishListItem wishListItem);
+    WishListItem createWishListItem(WishListItem wishListItem, ProductDto productDto);
 
     /**
      * GET ALL WISHLIST ITEMS FOR ADMIN
@@ -22,7 +23,7 @@ public interface WishListItemService {
      * 
      * @return
      */
-    List<WishListItem> getAllWishListItem();
+    List<WishListItem> getAllWishListItems();
 
 
     /**
@@ -39,7 +40,6 @@ public interface WishListItemService {
      */
 
 
-
     /**
      * DELETE WISHLIST ITEM BASE ON THE ID
      * 
@@ -51,7 +51,7 @@ public interface WishListItemService {
      
 
 
-
+    List<WishListItem> searchWishListItemsById(Long id);
 
     
     

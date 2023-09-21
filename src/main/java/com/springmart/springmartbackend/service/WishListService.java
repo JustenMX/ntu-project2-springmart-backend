@@ -2,8 +2,10 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
+import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.WishList;
+import com.springmart.springmartbackend.entity.WishListItem;
 
 public interface WishListService {
 
@@ -29,5 +31,12 @@ public interface WishListService {
      * @return
      */
     WishList getWishList(Long id);
+
+
+    WishListItem addWishListItemToWishList(long id, ProductDto productDto);
+
+    // List<WishListItem> getWishListItemByUser(long id);
+    
+
 
 }

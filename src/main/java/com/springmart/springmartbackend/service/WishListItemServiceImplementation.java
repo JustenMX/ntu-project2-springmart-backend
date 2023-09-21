@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.springmart.springmartbackend.dao.ProductRepository;
 import com.springmart.springmartbackend.dao.WishListItemRepository;
+import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.WishListItem;
 import com.springmart.springmartbackend.exception.WishListItemNotFoundException;
 
@@ -15,13 +17,14 @@ import lombok.AllArgsConstructor;
 public class WishListItemServiceImplementation implements WishListItemService {
 
     private WishListItemRepository wishListItemRepository;
+    
 
     /**
      * CREATE WISHLIST ITEM UPON ADD TO WISHLIST
      */
 
     @Override
-    public WishListItem createWishListItem(WishListItem wishListItem) {
+    public WishListItem createWishListItem(WishListItem wishListItem, ProductDto productDto) {
 
         return wishListItemRepository.save(wishListItem);
 
@@ -32,7 +35,7 @@ public class WishListItemServiceImplementation implements WishListItemService {
      */
 
     @Override
-    public List<WishListItem> getAllWishListItem() {
+    public List<WishListItem> getAllWishListItems() {
         List<WishListItem> allWishListItems = wishListItemRepository.findAll();
         return allWishListItems;
     }
@@ -54,6 +57,18 @@ public class WishListItemServiceImplementation implements WishListItemService {
     public void deleteWishListItem(Long id) {
         wishListItemRepository.deleteById(id);
     }
+
+    @Override
+    public List<WishListItem> searchWishListItemsById(Long id){
+        List<WishListItem> foundWishListItemsById = wishListItemRepository.findByWishListId(id);
+        return (List<WishListItem>) foundWishListItemsById;
+    }
+
+        //  Product findProduct = new Product();
+        // findProduct.setId(productDto.getId());
+        // WishListItem newWishListItem = new WishListItem();
+        // newWishListItem.setProduct(findProduct);
+        // return wishListItemRepository.save(newWishListItem);
 
 
 }
