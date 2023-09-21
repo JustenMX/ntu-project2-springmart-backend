@@ -16,11 +16,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "springuser_auth")
-public class SpringUserAuthDetails implements UserDetails {
+public class SpringUserAuth implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +36,12 @@ public class SpringUserAuthDetails implements UserDetails {
             @JoinColumn(name = "role_id") })
     private Set<Role> authorities;
 
-    public SpringUserAuthDetails() {
+    public SpringUserAuth() {
         super();
         this.authorities = new HashSet<Role>();
     }
 
-    public SpringUserAuthDetails(Long userId, String username, String password, Set<Role> authorities) {
+    public SpringUserAuth(Long userId, String username, String password, Set<Role> authorities) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -101,5 +102,12 @@ public class SpringUserAuthDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    /**
+     * ONE TO ONE
+     */
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private SpringUser springUser;
 
 }

@@ -74,6 +74,8 @@ public class SpringUser {
     /**
      * ONE TO ONE
      */
+    @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
+    private SpringUserAuth springUserAuth;
 
     @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
     private WishList wishList;
