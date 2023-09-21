@@ -1118,3 +1118,39 @@ java.lang.IllegalArgumentException: The given id must not be null
 2023-09-22T04:11:49.611+08:00  INFO 43467 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-09-22T04:11:49.611+08:00  INFO 43467 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
 2023-09-22T04:11:49.612+08:00  INFO 43467 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2023-09-22T04:30:04.286+08:00  INFO 48027 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Starting SpringmartBackendApplication using Java 17.0.8 with PID 48027 (/Users/justen/Desktop/Dev_Projects/springmart-backend/target/classes started by justen in /Users/justen/Desktop/Dev_Projects/springmart-backend)
+2023-09-22T04:30:04.287+08:00  INFO 48027 --- [restartedMain] c.s.s.SpringmartBackendApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-22T04:30:04.305+08:00  INFO 48027 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-22T04:30:04.305+08:00  INFO 48027 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-22T04:30:04.580+08:00  INFO 48027 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22T04:30:04.614+08:00  INFO 48027 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2023-09-22T04:30:04.883+08:00  INFO 48027 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-09-22T04:30:04.889+08:00  INFO 48027 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-22T04:30:04.889+08:00  INFO 48027 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2023-09-22T04:30:04.919+08:00  INFO 48027 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-22T04:30:04.919+08:00  INFO 48027 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 614 ms
+2023-09-22T04:30:04.992+08:00  INFO 48027 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22T04:30:05.019+08:00  INFO 48027 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-22T04:30:05.020+08:00  INFO 48027 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-22T04:30:05.077+08:00  INFO 48027 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:30:05.138+08:00  INFO 48027 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22T04:30:05.146+08:00  INFO 48027 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-22T04:30:05.198+08:00  INFO 48027 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5ce4089f
+2023-09-22T04:30:05.199+08:00  INFO 48027 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-22T04:30:05.348+08:00  INFO 48027 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-22T04:30:05.680+08:00  INFO 48027 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22T04:30:05.764+08:00  INFO 48027 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T04:30:06.728+08:00  WARN 48027 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22T04:30:06.853+08:00  INFO 48027 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1a22d064, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20b87d33, org.springframework.security.web.context.SecurityContextHolderFilter@35c4017d, org.springframework.security.web.header.HeaderWriterFilter@5bf09708, org.springframework.security.web.authentication.logout.LogoutFilter@798139b2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1914669d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c1bfb42, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12b9bbd9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26133a75, org.springframework.security.web.access.ExceptionTranslationFilter@6a17a4ef, org.springframework.security.web.access.intercept.AuthorizationFilter@402e566]
+2023-09-22T04:30:06.954+08:00  INFO 48027 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-09-22T04:30:06.966+08:00  INFO 48027 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-09-22T04:30:06.971+08:00  INFO 48027 --- [restartedMain] c.s.s.SpringmartBackendApplication       : Started SpringmartBackendApplication in 2.846 seconds (process running for 3.038)
+2023-09-22T04:30:27.230+08:00  INFO 48027 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-22T04:30:27.230+08:00  INFO 48027 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-22T04:30:27.231+08:00  INFO 48027 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-22T04:30:27.553+08:00  INFO 48027 --- [http-nio-9090-exec-1] c.s.s.s.SpringUserServiceImplementation  : Added new customer [ID: 1, Name: Justen]
+2023-09-22T05:08:29.612+08:00  WARN 48027 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m50s201ms).
+2023-09-22T05:17:32.247+08:00  WARN 48027 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m32s629ms).
+2023-09-22T05:18:39.684+08:00  INFO 48027 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22T05:18:39.689+08:00  INFO 48027 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-22T05:18:39.691+08:00  INFO 48027 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
