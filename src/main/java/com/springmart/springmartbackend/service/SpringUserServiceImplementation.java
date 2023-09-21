@@ -1,16 +1,21 @@
 package com.springmart.springmartbackend.service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.springmart.springmartbackend.dao.SpringUserAuthRepository;
 import com.springmart.springmartbackend.dao.SpringUserRepository;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.dto.SpringUserDto;
 import com.springmart.springmartbackend.entity.Cart;
+import com.springmart.springmartbackend.entity.Role;
 import com.springmart.springmartbackend.entity.SpringUser;
+import com.springmart.springmartbackend.entity.SpringUserAuth;
 import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.exception.SpringUserNotFoundException;
 
@@ -22,6 +27,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
     private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
+    private SpringUserAuthRepository springUserAuthRepository;
 
     /**
      * CREATE USER (++ CREATE CART, CREATE WISHLIST)
@@ -53,6 +59,19 @@ public class SpringUserServiceImplementation implements SpringUserService {
         // LOGGER
         logger.info("Added new customer [ID: {}, Name: {}]", springUser.getId(),
                 springUser.getFirstName());
+
+        // CREATE SPRINGUSERAUTH FOR AUTHENTICATION
+        SpringUserAuth springUserAuth = new SpringUserAuth();
+        springUserAuth.setUsername(springUser.getEmail());
+        springUserAuth.setPassword(springUser.getPassword());
+
+        // SET DEFAULT ROLES
+        Set<Role> roles = new HashSet<>();
+        roles.add(new Role(null, "USER"));
+        springUserAuth.setAuthorities(roles);
+
+        springUserAuth = springUserAuthRepository.save(springUserAuth);
+        springUser.setSpringUserAuth(springUserAuth);
 
         return springUserRepository.save(springUser);
     }
