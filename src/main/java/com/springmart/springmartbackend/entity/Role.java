@@ -35,7 +35,6 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        // TODO auto-generated method stub
         return this.authority;
     }
 
