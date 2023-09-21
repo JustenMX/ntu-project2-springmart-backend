@@ -8,10 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.entity.Role;
 import com.springmart.springmartbackend.entity.SpringUserAuthDetails;
 
+@Service
 public class SpringUserAuthService implements UserDetailsService {
 
     @Autowired
