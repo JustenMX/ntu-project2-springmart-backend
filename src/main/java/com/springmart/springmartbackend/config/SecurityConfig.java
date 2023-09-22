@@ -54,7 +54,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/springmart/api/user/register").permitAll();
                     auth.requestMatchers("/springmart/api/authentication/login").permitAll();
-                    auth.requestMatchers("/springmart/api/user/**").permitAll();
+                    
                     auth.anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer
