@@ -1,10 +1,9 @@
 package com.springmart.springmartbackend.service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,31 +11,55 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.SpringUserAuthRepository;
-import com.springmart.springmartbackend.entity.Role;
+import com.springmart.springmartbackend.dto.LoginRequestDto;
+import com.springmart.springmartbackend.dto.LoginResponseDto;
 import com.springmart.springmartbackend.entity.SpringUserAuth;
+import com.springmart.springmartbackend.exception.AuthenticationFailureException;
 import com.springmart.springmartbackend.exception.SpringUserAuthNotFoundException;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class SpringUserAuthService implements UserDetailsService {
 
-    @Autowired
-    private PasswordEncoder encoder;
-
-    @Autowired
+    private PasswordEncoder passwordEncoder;
     private SpringUserAuthRepository springUserAuthRepository;
+    private TokenService tokenService;
 
+    /**
+     * LOAD USER BY USERNAME
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("In the springuser auth service");
 
-        if (!username.equals("Justen"))
-            throw new UsernameNotFoundException("Not Justen");
+        return springUserAuthRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("user is not valid"));
 
-        Set<Role> roles = new HashSet<>();
-        roles.add(new Role(null, "USER"));
+    }
 
-        return new SpringUserAuth(1L, "Justen", encoder.encode("password"), roles);
+    /**
+     * AUTHENTICATE SPRING USER LOGIN
+     * 
+     * @param loginRequestDto
+     * @return
+     */
+    public LoginResponseDto authenticateLogin(LoginRequestDto loginRequestDto) {
+        String username = loginRequestDto.getUsername();
+        String password = loginRequestDto.getPassword();
+        UserDetails userDetails = loadUserByUsername(username);
 
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new AuthenticationFailureException("Invalid credentials");
+        }
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
+
+        String jwtToken = tokenService.generateJwt(authentication);
+
+        return new LoginResponseDto((SpringUserAuth) userDetails, jwtToken);
     }
 
     /**

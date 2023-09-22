@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.RoleRepository;
@@ -30,9 +31,10 @@ public class SpringUserServiceImplementation implements SpringUserService {
     private SpringUserRepository springUserRepository;
     private SpringUserAuthRepository springUserAuthRepository;
     private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
     /**
-     * CREATE USER (++ CREATE CART, CREATE WISHLIST)
+     * CREATE USER (++ CREATE CART, CREATE WISHLIST, CREATE SPRING USER AUTH)
      */
     @Override
     public SpringUser registerUser(SpringUserRegistration springUserRegistration) {
@@ -48,6 +50,10 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setJoinDate(springUserRegistration.getJoinDate());
         springUser = springUserRepository.save(springUser);
 
+        // RE-HASH THE PASSWORD AGAIN FOR ADDITIONAL SECURITY
+        String hashedPassword = passwordEncoder.encode(springUser.getPassword());
+        springUser.setPassword(hashedPassword);
+
         // CREATE CART
         Cart cart = new Cart();
         cart.setSpringUser(springUser);
@@ -62,7 +68,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
         logger.info("Added new customer [ID: {}, Name: {}]", springUser.getId(),
                 springUser.getFirstName());
 
-        // CREATE SPRINGUSERAUTH FOR AUTHENTICATION
+        // CREATE SPRING USER AUTH FOR AUTHENTICATION
         SpringUserAuth springUserAuth = new SpringUserAuth();
         springUserAuth.setUsername(springUser.getEmail());
         springUserAuth.setPassword(springUser.getPassword());
