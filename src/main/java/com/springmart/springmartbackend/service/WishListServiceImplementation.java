@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.dao.ProductRepository;
 import com.springmart.springmartbackend.dao.WishListItemRepository;
 import com.springmart.springmartbackend.dao.WishListRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
-import com.springmart.springmartbackend.entity.Product;
 import com.springmart.springmartbackend.entity.SpringUser;
 import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.entity.WishListItem;
@@ -23,7 +21,6 @@ public class WishListServiceImplementation implements WishListService {
 
     private WishListRepository wishListRepository;
     private WishListItemRepository wishListItemRepository;
-    private ProductRepository productRepository;
 
     /**
      * CREATE WISHLIST UPON USER REGISTRATION
@@ -58,11 +55,11 @@ public class WishListServiceImplementation implements WishListService {
         return foundWishList;
     }
 
-
     @Override
     public WishListItem addWishListItemToWishList(long id, ProductDto productDto) {
-       
-        WishList selectedWishList = wishListRepository.findById(id).orElseThrow(() -> new WishListNotFoundException(id));
+
+        WishList selectedWishList = wishListRepository.findById(id)
+                .orElseThrow(() -> new WishListNotFoundException(id));
 
         WishListItem newWishListItem = new WishListItem();
         // Product newProduct = new Product();
@@ -80,12 +77,5 @@ public class WishListServiceImplementation implements WishListService {
         newWishListItem.setWishList(selectedWishList);
         return wishListItemRepository.save(newWishListItem);
     }
-
-    // @Override
-    // public List<WishListItem> getWishListItemByUser(long id){
-    //     List<WishListItem> allWishListItems = wishListItemRepository.findAllById(id).orElseThrow(() -> new WishListNotFoundException(id));
-    // }
-
- 
 
 }

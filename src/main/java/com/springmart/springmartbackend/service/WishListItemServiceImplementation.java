@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.dao.ProductRepository;
 import com.springmart.springmartbackend.dao.WishListItemRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.WishListItem;
@@ -17,7 +16,6 @@ import lombok.AllArgsConstructor;
 public class WishListItemServiceImplementation implements WishListItemService {
 
     private WishListItemRepository wishListItemRepository;
-    
 
     /**
      * CREATE WISHLIST ITEM UPON ADD TO WISHLIST
@@ -47,7 +45,8 @@ public class WishListItemServiceImplementation implements WishListItemService {
      */
     @Override
     public WishListItem getWishListItem(Long id) {
-        WishListItem foundWishListItem = wishListItemRepository.findById(id).orElseThrow(() -> new WishListItemNotFoundException(id));
+        WishListItem foundWishListItem = wishListItemRepository.findById(id)
+                .orElseThrow(() -> new WishListItemNotFoundException(id));
 
         return foundWishListItem;
 
@@ -59,16 +58,15 @@ public class WishListItemServiceImplementation implements WishListItemService {
     }
 
     @Override
-    public List<WishListItem> searchWishListItemsById(Long id){
+    public List<WishListItem> searchWishListItemsById(Long id) {
         List<WishListItem> foundWishListItemsById = wishListItemRepository.findByWishListId(id);
         return (List<WishListItem>) foundWishListItemsById;
     }
 
-        //  Product findProduct = new Product();
-        // findProduct.setId(productDto.getId());
-        // WishListItem newWishListItem = new WishListItem();
-        // newWishListItem.setProduct(findProduct);
-        // return wishListItemRepository.save(newWishListItem);
-
+    // Product findProduct = new Product();
+    // findProduct.setId(productDto.getId());
+    // WishListItem newWishListItem = new WishListItem();
+    // newWishListItem.setProduct(findProduct);
+    // return wishListItemRepository.save(newWishListItem);
 
 }

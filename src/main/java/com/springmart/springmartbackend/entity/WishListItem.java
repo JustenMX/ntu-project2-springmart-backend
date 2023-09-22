@@ -1,8 +1,6 @@
 package com.springmart.springmartbackend.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.springmart.springmartbackend.dto.ProductDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -33,10 +30,6 @@ public class WishListItem {
     @Column(name = "id")
     private Long id;
 
-
-    // @Column(name = "product")
-    // private Product product;
-    
     @Column(name = "product_id")
     private Long productId;
 
@@ -73,16 +66,12 @@ public class WishListItem {
     @NotNull(message = "Image url is required")
     private String imgUrl;
 
-
-
-    // private Product product
-    // create a wishlistdto ( Long id and product product)
-    // 
-
-    
+    /**
+     * MANY TO ONE
+     */
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "wishlist_id", referencedColumnName = "id")
     private WishList wishList;
-    
+
 }
