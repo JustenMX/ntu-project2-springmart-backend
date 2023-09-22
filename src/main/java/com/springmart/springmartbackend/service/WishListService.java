@@ -32,11 +32,13 @@ public interface WishListService {
      */
     WishList getWishList(Long id);
 
-
+    /**
+     * ADD WISHLIST ITEM TO WISHLIST
+     * 
+     * @param id
+     * @param productDto
+     * @return
+     */
     WishListItem addWishListItemToWishList(long id, ProductDto productDto);
-
-    // List<WishListItem> getWishListItemByUser(long id);
-    
-
 
 }

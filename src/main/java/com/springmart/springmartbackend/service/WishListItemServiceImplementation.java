@@ -63,10 +63,4 @@ public class WishListItemServiceImplementation implements WishListItemService {
         return (List<WishListItem>) foundWishListItemsById;
     }
 
-    // Product findProduct = new Product();
-    // findProduct.setId(productDto.getId());
-    // WishListItem newWishListItem = new WishListItem();
-    // newWishListItem.setProduct(findProduct);
-    // return wishListItemRepository.save(newWishListItem);
-
 }

@@ -62,7 +62,6 @@ public class WishListServiceImplementation implements WishListService {
                 .orElseThrow(() -> new WishListNotFoundException(id));
 
         WishListItem newWishListItem = new WishListItem();
-        // Product newProduct = new Product();
         newWishListItem.setId(productDto.getId());
         newWishListItem.setBrand(productDto.getBrand());
         newWishListItem.setLabel(productDto.getLabel());
@@ -72,7 +71,6 @@ public class WishListServiceImplementation implements WishListService {
         newWishListItem.setSaleItem(productDto.isSaleItem());
         newWishListItem.setProductCategory(productDto.getProductCategory());
         newWishListItem.setImgUrl(productDto.getImgUrl());
-        // newWishListItem.setProduct(newProduct);
 
         newWishListItem.setWishList(selectedWishList);
         return wishListItemRepository.save(newWishListItem);
