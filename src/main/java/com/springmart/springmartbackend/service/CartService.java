@@ -2,8 +2,10 @@ package com.springmart.springmartbackend.service;
 
 import java.util.List;
 
+import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.dto.SpringUserRegistration;
 import com.springmart.springmartbackend.entity.Cart;
+import com.springmart.springmartbackend.entity.CartItem;
 
 public interface CartService {
 
@@ -29,5 +31,7 @@ public interface CartService {
      * @return
      */
     Cart getCart(Long id);
+
+    CartItem addCartItemToCart(long id, ProductDto productDto);
 
 }

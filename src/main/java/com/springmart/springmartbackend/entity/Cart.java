@@ -1,5 +1,7 @@
 package com.springmart.springmartbackend.entity;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -10,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -33,5 +36,9 @@ public class Cart {
     @OneToOne
     @JoinColumn(name = "springuser_id", referencedColumnName = "id")
     private SpringUser springUser;
+
+    @OneToMany(mappedBy = "cart")
+    private List<CartItem> cartItem;
+
 
 }

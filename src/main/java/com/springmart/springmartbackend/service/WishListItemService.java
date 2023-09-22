@@ -30,11 +30,6 @@ public interface WishListItemService {
      */
     WishListItem getWishListItem(Long id);
 
-    /**
-     * GET WISHLIST ITEM BASE ON THE USERID/WISHLISTID
-     * 
-     * @return
-     */
 
     /**
      * DELETE WISHLIST ITEM BASE ON THE ID
