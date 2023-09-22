@@ -3,10 +3,8 @@ package com.springmart.springmartbackend.service;
 import java.util.List;
 
 import com.springmart.springmartbackend.dto.ProductDto;
-import com.springmart.springmartbackend.dto.SpringUserDto;
 import com.springmart.springmartbackend.entity.CartItem;
-import com.springmart.springmartbackend.entity.SpringUser;
-import com.springmart.springmartbackend.entity.WishListItem;
+
 
 public interface CartItemService {
 

@@ -8,8 +8,6 @@ import com.springmart.springmartbackend.entity.Cart;
 import com.springmart.springmartbackend.entity.CartItem;
 import com.springmart.springmartbackend.entity.Product;
 import com.springmart.springmartbackend.entity.SpringUser;
-import com.springmart.springmartbackend.entity.WishList;
-import com.springmart.springmartbackend.entity.WishListItem;
 import com.springmart.springmartbackend.exception.CartNotFoundException;
 import com.springmart.springmartbackend.exception.WishListNotFoundException;
 import com.springmart.springmartbackend.dao.CartItemRepository;

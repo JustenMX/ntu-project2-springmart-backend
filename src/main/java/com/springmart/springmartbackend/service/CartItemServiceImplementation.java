@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.springmart.springmartbackend.dao.CartItemRepository;
-import com.springmart.springmartbackend.dao.WishListItemRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.CartItem;
 import com.springmart.springmartbackend.exception.CartItemNotFoundException;
-import com.springmart.springmartbackend.exception.WishListItemNotFoundException;
+
 
 import lombok.AllArgsConstructor;
 
@@ -68,10 +67,6 @@ public class CartItemServiceImplementation implements CartItemService {
         cartItemRepository.deleteById(id);
     }
 
-    // @Override
-    // public List<CartItem> searchCartItemById(Long id) {
-    // List<CartItem> foundCartItemById = cartItemRepository.findById(id);
-    // return (List<CartItem>) foundCartItemById;
-    // }
+ 
 
 }

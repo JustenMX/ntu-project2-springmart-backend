@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springmart.springmartbackend.dto.SpringUserDto;
+
 import com.springmart.springmartbackend.entity.CartItem;
-import com.springmart.springmartbackend.entity.SpringUser;
-import com.springmart.springmartbackend.entity.WishListItem;
 import com.springmart.springmartbackend.service.CartItemService;
 
 import lombok.AllArgsConstructor;
