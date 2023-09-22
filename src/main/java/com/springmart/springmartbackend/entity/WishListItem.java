@@ -33,9 +33,10 @@ public class WishListItem {
     @Column(name = "id")
     private Long id;
 
-
+    // @JsonBackReference
+    // @ManyToOne
     // @Column(name = "product")
-    // private Product product;
+    // private Long product;
     
     @Column(name = "product_id")
     private Long productId;

@@ -24,6 +24,7 @@ public class WishListServiceImplementation implements WishListService {
     private WishListRepository wishListRepository;
     private WishListItemRepository wishListItemRepository;
     private ProductRepository productRepository;
+    private ProductService productService;
 
     /**
      * CREATE WISHLIST UPON USER REGISTRATION
@@ -66,19 +67,39 @@ public class WishListServiceImplementation implements WishListService {
 
         WishListItem newWishListItem = new WishListItem();
         // Product newProduct = new Product();
-        newWishListItem.setId(productDto.getId());
-        newWishListItem.setBrand(productDto.getBrand());
-        newWishListItem.setLabel(productDto.getLabel());
-        newWishListItem.setDescription(productDto.getDescription());
-        newWishListItem.setCurrentPrice(productDto.getCurrentPrice());
-        newWishListItem.setOriginalPrice(productDto.getOriginalPrice());
-        newWishListItem.setSaleItem(productDto.isSaleItem());
-        newWishListItem.setProductCategory(productDto.getProductCategory());
-        newWishListItem.setImgUrl(productDto.getImgUrl());
+        // newProduct.setId(productDto.getId());
+        // newProduct.setBrand(productDto.getBrand());
+        // newProduct.setLabel(productDto.getLabel());
+        // newProduct.setDescription(productDto.getDescription());
+        // newProduct.setCurrentPrice(productDto.getCurrentPrice());
+        // newProduct.setOriginalPrice(productDto.getOriginalPrice());
+        // newProduct.setSaleItem(productDto.isSaleItem());
+        // newProduct.setProductCategory(productDto.getProductCategory());
+        // newProduct.setImgUrl(productDto.getImgUrl());
         // newWishListItem.setProduct(newProduct);
+
+        // newWishListItem.setWishList(selectedWishList);
+        // return wishListItemRepository.save(newWishListItem);
+
+        Long productId = productDto.getId();
+
+        Product product = productService.getProduct(productId);
+        newWishListItem.setProductId(product.getId());
+        newWishListItem.setBrand(product.getBrand());
+        newWishListItem.setLabel(product.getLabel());
+        newWishListItem.setDescription(product.getDescription());
+        newWishListItem.setCurrentPrice(product.getCurrentPrice());
+        newWishListItem.setOriginalPrice(product.getOriginalPrice());
+        newWishListItem.setSaleItem(product.isSaleItem());
+        newWishListItem.setProductCategory(product.getProductCategory());
+        newWishListItem.setImgUrl(product.getImgUrl());
 
         newWishListItem.setWishList(selectedWishList);
         return wishListItemRepository.save(newWishListItem);
+
+        
+
+
     }
 
     // @Override
