@@ -50,7 +50,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
         springUser.setJoinDate(springUserRegistration.getJoinDate());
         springUser = springUserRepository.save(springUser);
 
-        // RE-HASH THE PASSWORD AGAIN FOR ADDITIONAL SECURITY
+        // HASH THE PASSWORD FOR ADDITIONAL SECURITY
         String hashedPassword = passwordEncoder.encode(springUser.getPassword());
         springUser.setPassword(hashedPassword);
 
