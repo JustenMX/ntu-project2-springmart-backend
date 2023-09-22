@@ -46,11 +46,15 @@ public class SpringUserAuthService implements UserDetailsService {
      * @return
      */
     public LoginResponseDto authenticateLogin(LoginRequestDto loginRequestDto) {
+        System.out.println("In the springuser auth service (authenticate login)");
         String username = loginRequestDto.getUsername();
         String password = loginRequestDto.getPassword();
         //
         SpringUserAuth userDetails = springUserAuthRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("user is not valid"));
+
+        System.out.println("Entered Password: " + password);
+        System.out.println("Stored Password: " + userDetails.getPassword());
 
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new AuthenticationFailureException("Invalid credentials");
@@ -59,8 +63,12 @@ public class SpringUserAuthService implements UserDetailsService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 userDetails, null, userDetails.getAuthorities());
 
+        System.out.println("Authenticated");
+
         String jwtToken = tokenService.generateJwt(authentication);
+
         System.out.println("Generated JWT Token: " + jwtToken);
+
         return new LoginResponseDto((SpringUserAuth) userDetails, jwtToken);
     }
 
