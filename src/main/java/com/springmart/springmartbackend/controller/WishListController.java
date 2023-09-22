@@ -55,17 +55,10 @@ public class WishListController {
     }
 
     @PostMapping("/{id}/wishlistitem")
-    public ResponseEntity<WishListItem> addWishListItemToWishList(@PathVariable long id, @RequestBody ProductDto productDto) {
+    public ResponseEntity<WishListItem> addWishListItemToWishList(@PathVariable long id,
+            @RequestBody ProductDto productDto) {
         WishListItem newWishListItem = wishListService.addWishListItemToWishList(id, productDto);
         return new ResponseEntity<>(newWishListItem, HttpStatus.OK);
     }
-
-    // @GetMapping("/{id}/wishlistitem")
-    // public ResponseEntity<List<WishListItem>> getWishListItemByUser(@PathVariable long id) {
-    //     return new ResponseEntity<>(wishListService.getWishListItemByUser(id), HttpStatus.OK);
-    // }
-
-    
-   
 
 }

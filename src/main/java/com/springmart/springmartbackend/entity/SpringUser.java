@@ -84,12 +84,4 @@ public class SpringUser {
     @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
     private Cart cart;
 
-//     @OneToOne(cascade = CascadeType.ALL)
-//      @JoinColumn(name = "wishlist_id", referencedColumnName = "id")
-//     private WishList wishList;
-
-//     @OneToOne(cascade = CascadeType.ALL)
-//     @JoinColumn(name = "cart_id", referencedColumnName = "id")
-//     private Cart cart;
-
 }
