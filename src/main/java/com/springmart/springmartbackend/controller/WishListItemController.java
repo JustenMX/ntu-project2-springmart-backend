@@ -36,10 +36,10 @@ public class WishListItemController {
         return new ResponseEntity<>(foundWishListItem, HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteWishListItem(@PathVariable Long id) {
         wishListItemService.deleteWishListItem(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

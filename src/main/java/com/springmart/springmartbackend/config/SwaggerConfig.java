@@ -10,7 +10,7 @@ import io.swagger.v3.oas.models.info.Info;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI springMartApi() {
+    OpenAPI springMartApi() {
         return new OpenAPI().info(new Info().title("Spring Mart API")
                 .description("Spring Mart Application API").version("v1.0.0"));
     }
