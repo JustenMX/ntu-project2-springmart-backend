@@ -52,8 +52,8 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/springmart/api/user/registration").permitAll();
-                    auth.requestMatchers("/springmart/api/userauth/authenticate").permitAll();
+                    auth.requestMatchers("/springmart/api/user/register").permitAll();
+                    auth.requestMatchers("/springmart/api/authentication/login").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer
