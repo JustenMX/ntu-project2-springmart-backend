@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.dao.ProductRepository;
+
 import com.springmart.springmartbackend.dao.WishListItemRepository;
 import com.springmart.springmartbackend.dao.WishListRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
@@ -23,7 +23,6 @@ public class WishListServiceImplementation implements WishListService {
 
     private WishListRepository wishListRepository;
     private WishListItemRepository wishListItemRepository;
-    private ProductRepository productRepository;
     private ProductService productService;
 
     /**
@@ -66,20 +65,6 @@ public class WishListServiceImplementation implements WishListService {
         WishList selectedWishList = wishListRepository.findById(id).orElseThrow(() -> new WishListNotFoundException(id));
 
         WishListItem newWishListItem = new WishListItem();
-        // Product newProduct = new Product();
-        // newProduct.setId(productDto.getId());
-        // newProduct.setBrand(productDto.getBrand());
-        // newProduct.setLabel(productDto.getLabel());
-        // newProduct.setDescription(productDto.getDescription());
-        // newProduct.setCurrentPrice(productDto.getCurrentPrice());
-        // newProduct.setOriginalPrice(productDto.getOriginalPrice());
-        // newProduct.setSaleItem(productDto.isSaleItem());
-        // newProduct.setProductCategory(productDto.getProductCategory());
-        // newProduct.setImgUrl(productDto.getImgUrl());
-        // newWishListItem.setProduct(newProduct);
-
-        // newWishListItem.setWishList(selectedWishList);
-        // return wishListItemRepository.save(newWishListItem);
 
         Long productId = productDto.getId();
 
@@ -102,10 +87,6 @@ public class WishListServiceImplementation implements WishListService {
 
     }
 
-    // @Override
-    // public List<WishListItem> getWishListItemByUser(long id){
-    //     List<WishListItem> allWishListItems = wishListItemRepository.findAllById(id).orElseThrow(() -> new WishListNotFoundException(id));
-    // }
 
  
 

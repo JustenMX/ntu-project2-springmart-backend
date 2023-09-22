@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmart.springmartbackend.dao.ProductRepository;
 import com.springmart.springmartbackend.dao.WishListItemRepository;
 import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.WishListItem;
@@ -64,11 +63,6 @@ public class WishListItemServiceImplementation implements WishListItemService {
         return (List<WishListItem>) foundWishListItemsById;
     }
 
-        //  Product findProduct = new Product();
-        // findProduct.setId(productDto.getId());
-        // WishListItem newWishListItem = new WishListItem();
-        // newWishListItem.setProduct(findProduct);
-        // return wishListItemRepository.save(newWishListItem);
 
 
 }

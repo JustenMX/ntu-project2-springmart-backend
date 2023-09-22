@@ -22,8 +22,7 @@ public class SpringUserServiceImplementation implements SpringUserService {
 
     private final Logger logger = LoggerFactory.getLogger(SpringUserServiceImplementation.class);
     private SpringUserRepository springUserRepository;
-    private CartServiceImplementation cartService;
-    private WishListServiceImplementation wishListService;
+
 
     /**
      * CREATE USER (++ CREATE CART, CREATE WISHLIST)

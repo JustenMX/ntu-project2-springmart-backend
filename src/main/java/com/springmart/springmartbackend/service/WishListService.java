@@ -34,8 +34,6 @@ public interface WishListService {
 
 
     WishListItem addWishListItemToWishList(long id, ProductDto productDto);
-
-    // List<WishListItem> getWishListItemByUser(long id);
     
 
 

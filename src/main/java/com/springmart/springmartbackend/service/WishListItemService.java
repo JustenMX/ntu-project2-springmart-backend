@@ -3,7 +3,6 @@ package com.springmart.springmartbackend.service;
 import java.util.List;
 
 import com.springmart.springmartbackend.dto.ProductDto;
-import com.springmart.springmartbackend.entity.WishList;
 import com.springmart.springmartbackend.entity.WishListItem;
 
 public interface WishListItemService {
