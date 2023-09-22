@@ -29,6 +29,11 @@ public class SpringUserController {
 
     private SpringUserServiceImplementation springUserService;
 
+    @GetMapping("/hello")
+    public String helloSpringUserController() {
+        return "Springmart User Level Access";
+    }
+
     /**
      * CREATE USER
      * 

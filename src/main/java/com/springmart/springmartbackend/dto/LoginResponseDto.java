@@ -1,15 +1,15 @@
 package com.springmart.springmartbackend.dto;
 
+import com.springmart.springmartbackend.entity.SpringUserAuth;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorResponse {
-    private String message;
-    private LocalDateTime timestamp;
+public class LoginResponseDto {
+    private SpringUserAuth springUserAuth;
+    private String jwt;
 }
