@@ -8,9 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.springmart.springmartbackend.dto.ProductDto;
 import com.springmart.springmartbackend.entity.WishList;
+import com.springmart.springmartbackend.entity.WishListItem;
 import com.springmart.springmartbackend.service.WishListService;
 import lombok.AllArgsConstructor;
 
@@ -48,5 +53,19 @@ public class WishListController {
         return new ResponseEntity<>(foundWishList, HttpStatus.OK);
 
     }
+
+    @PostMapping("/{id}/wishlistitem")
+    public ResponseEntity<WishListItem> addWishListItemToWishList(@PathVariable long id, @RequestBody ProductDto productDto) {
+        WishListItem newWishListItem = wishListService.addWishListItemToWishList(id, productDto);
+        return new ResponseEntity<>(newWishListItem, HttpStatus.OK);
+    }
+
+    // @GetMapping("/{id}/wishlistitem")
+    // public ResponseEntity<List<WishListItem>> getWishListItemByUser(@PathVariable long id) {
+    //     return new ResponseEntity<>(wishListService.getWishListItemByUser(id), HttpStatus.OK);
+    // }
+
+    
+   
 
 }

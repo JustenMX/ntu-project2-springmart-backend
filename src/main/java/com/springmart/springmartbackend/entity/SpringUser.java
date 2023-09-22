@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -82,5 +83,13 @@ public class SpringUser {
 
     @OneToOne(mappedBy = "springUser", cascade = CascadeType.ALL)
     private Cart cart;
+
+//     @OneToOne(cascade = CascadeType.ALL)
+//      @JoinColumn(name = "wishlist_id", referencedColumnName = "id")
+//     private WishList wishList;
+
+//     @OneToOne(cascade = CascadeType.ALL)
+//     @JoinColumn(name = "cart_id", referencedColumnName = "id")
+//     private Cart cart;
 
 }
