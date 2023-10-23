@@ -52,21 +52,21 @@ public class WishListItemServiceImplementation implements WishListItemService {
 
     }
 
+    /**
+     * DELETE WISHLIST ITEM
+     */
     @Override
     public void deleteWishListItem(Long id) {
         wishListItemRepository.deleteById(id);
     }
 
+    /**
+     * SEARCH WISHLIST ITEMS BY ID
+     */
     @Override
     public List<WishListItem> searchWishListItemsById(Long id) {
         List<WishListItem> foundWishListItemsById = wishListItemRepository.findByWishListId(id);
         return (List<WishListItem>) foundWishListItemsById;
     }
-
-    // Product findProduct = new Product();
-    // findProduct.setId(productDto.getId());
-    // WishListItem newWishListItem = new WishListItem();
-    // newWishListItem.setProduct(findProduct);
-    // return wishListItemRepository.save(newWishListItem);
 
 }
