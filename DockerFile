@@ -1,15 +1,11 @@
-FROM maven:3.9.3-eclipse-temurin-17 as backend
-WORKDIR /SPRINGMART-BACKEND
-COPY SPRINGMART-BACKEND .
-RUN mvn clean package
+FROM maven:3.9.5-eclipse-temurin-17 AS maven-build
+WORKDIR /app
+COPY . .
+RUN mvn -B -DskipTests clean package
 
-FROM eclipse-temurin:17-alpine
-COPY --from=SPRINGMART-BACKEND /SPRINGMART-BACKEND/target/SPRINGMART-BACKEND-0.0.1-SNAPSHOT.jar ./app.jar
-# RUN mkdir logs/
-# COPY --from=SPRINGMART-BACKEND /SPRINGMART-BACKEND/logs/application.log ./logs/application.log
-EXPOSE 8080
-# RUN adduser -D user
-# USER user
-# CMD [ "sh", "-c", "java -Dserver.port=$PORT -Djava.security.egd=file:/dev/./urandom -jar app.jar" ]
-ENTRYPOINT ["java","-jar","/app.jar"]
-# adding thoughts and prayers for this to work
+FROM openjdk:17.0
+WORKDIR /app
+COPY --from=maven-build /app/target/springmart-backend-0.0.1-SNAPSHOT.jar ./app.jar
+EXPOSE 9090
+CMD ["java", "-jar", "app.jar"]
+
