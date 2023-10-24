@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   docker: circleci/docker@2.4.0
-  snyk: snyk/snyk@2.0.1
+  # snyk: snyk/snyk@2.0.1
   # heroku: circleci/heroku@2.0.0
 jobs:
   build:
@@ -24,23 +24,23 @@ jobs:
           command: |
             echo "Running test"
             mvn -B -DskipTests clean package
-  scan:
-    docker:
-      - image: cimg/openjdk:17.0
-    environment:
-      IMAGE_NAME: justenmx/springmart-backend:latest
-    steps:
-      - checkout
-      - setup_remote_docker
-      - docker/check
-      - run: docker build -t $IMAGE_NAME .
-      - snyk/scan:
-          docker-image-name: $IMAGE_NAME
-          fail-on-issues: false
-          monitor-on-build: true
-          project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
-          severity-threshold: low
-          token-variable: SNYK_TOKEN
+  # scan:
+  #   docker:
+  #     - image: cimg/openjdk:17.0
+  #   environment:
+  #     IMAGE_NAME: justenmx/springmart-backend:latest
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker
+  #     - docker/check
+  #     - run: docker build -t $IMAGE_NAME .
+  #     - snyk/scan:
+  #         docker-image-name: $IMAGE_NAME
+  #         fail-on-issues: false
+  #         monitor-on-build: true
+  #         project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
+  #         severity-threshold: low
+  #         token-variable: SNYK_TOKEN
 
   build-and-push:
     executor: docker/docker
@@ -72,12 +72,12 @@ jobs:
   #           heroku container:release web -a nutrimateapp
 
 workflows:
-  ci_flow:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+  # ci_flow:
+  #   jobs:
+  #     - build
+  #     - test:
+  #         requires:
+  #           - build
 
   cicd_flow:
     jobs:
@@ -85,12 +85,12 @@ workflows:
       - test:
           requires:
             - build
-      - scan:
-          requires:
-            - test
+      # - scan:
+      #     requires:
+      #       - test
       - build-and-push:
           requires:
-            - scan
+            - test
       # - deploy:
       #     requires:
       #       - build-and-push
