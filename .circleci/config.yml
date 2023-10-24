@@ -19,11 +19,11 @@ jobs:
       - checkout
       - maven/test
         - run:
-          name: Echo Message
-          command: echo "Running Build"
+            name: Echo Message
+            command: echo "Running Build"
         - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
+            name: Build
+            command: mvn -B -DskipTests clean package
 
   test:
     docker:
@@ -38,11 +38,11 @@ jobs:
       - checkout
       - maven/test
         - run:
-          name: Echo Message
-          command: echo "Running Tests"
+            name: Echo Message
+            command: echo "Running Tests"
         - run:
-          name: Test
-          command: mvn test
+            name: Test
+            command: mvn test
 
   build-and-push:
     docker:
