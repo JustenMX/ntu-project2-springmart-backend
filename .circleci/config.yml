@@ -1,0 +1,112 @@
+version: 2.1
+orbs:
+  maven: circleci/maven@1.4.1
+  docker: circleci/docker@2.4.0
+  snyk: snyk/snyk@2.0.1
+  # heroku: circleci/heroku@2.0.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:17.0
+      - image: postgres:latest
+        environment:
+          POSTGRES_DB: springmart
+          POSTGRES_USER: justen
+          POSTGRES_PASSWORD:
+    steps:
+      - checkout
+      - maven/install
+      - run:
+          name: Echo Message
+          command: echo "Running Build"
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+
+  test:
+    docker:
+      - image: cimg/openjdk:17.0
+      - image: postgres:latest
+        environment:
+          POSTGRES_DB: springmart
+          POSTGRES_USER: justen
+          POSTGRES_PASSWORD:
+    steps:
+      - checkout
+      - maven/install
+      - run:
+          name: Echo Message
+          command: echo "Running Tests"
+      - run:
+          name: Test
+          command: mvn test
+
+  build-and-push:
+    docker:
+      - image: cimg/openjdk:17.0
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: justenmx/springmart-backend
+          tag: <<pipeline.git.tag>>
+      - docker/push:
+          image: justenmx/springmart-backend
+          tag: <<pipeline.git.tag>>
+
+  scan:
+    docker:
+      - image: cimg/openjdk:17.0
+    environment:
+      IMAGE_NAME: justenmx/springmart-backend
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - run: docker build -t $IMAGE_NAME
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+
+  # deploy:
+  #   docker:
+  #     - image: cimg/openjdk:17.0
+  #   steps:
+  #     - setup_remote_docker
+  #     - heroku/install
+  #     - docker/pull:
+  #         image: justenmx/springmart-backend
+  #     - run:
+  #         name: Heroku Container Push
+  #         command: |
+  #           heroku container:login
+  #           docker tag your-docker-repo/your-image-name:1.0.0 registry.heroku.com/your-app-name/web
+  #           docker push registry.heroku.com/your-app-name/web
+  #           heroku container:release web -a your-app-name
+
+workflows:
+  SpringMartBackendPipeline:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: main
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
+      - build-and-push:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - scan:
+          requires:
+            - build
+      # - deploy:
+      #     requires:
+      #       - build-and-push
