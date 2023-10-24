@@ -12,3 +12,4 @@ EXPOSE 8080
 # USER user
 # CMD [ "sh", "-c", "java -Dserver.port=$PORT -Djava.security.egd=file:/dev/./urandom -jar app.jar" ]
 ENTRYPOINT ["java","-jar","/app.jar"]
+# adding thoughts and prayers for this to work
