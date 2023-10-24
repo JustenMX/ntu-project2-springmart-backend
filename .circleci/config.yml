@@ -18,10 +18,10 @@ jobs:
     steps:
       - checkout
       - maven/test
-      - run:
+        - run:
           name: Echo Message
           command: echo "Running Build"
-      - run:
+        - run:
           name: Build
           command: mvn -B -DskipTests clean package
 
@@ -37,10 +37,10 @@ jobs:
     steps:
       - checkout
       - maven/test
-      - run:
+        - run:
           name: Echo Message
           command: echo "Running Tests"
-      - run:
+        - run:
           name: Test
           command: mvn test
 
