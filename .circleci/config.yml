@@ -1,52 +1,51 @@
 version: 2.1
-
 orbs:
-  maven: circleci/maven@1.4.1
   docker: circleci/docker@2.4.0
   snyk: snyk/snyk@2.0.1
-
+  # heroku: circleci/heroku@2.0.0
 jobs:
   build:
     docker:
       - image: cimg/openjdk:17.0
-      - image: postgres:latest
-        environment:
-          POSTGRES_DB: springmart
-          POSTGRES_USER: justen
-          # POSTGRES_PASSWORD: your_password_here
-
     steps:
       - checkout
-      - maven/test
-        - run:
-            name: Echo Message
-            command: echo "Running Build"
-        - run:
-            name: Build
-            command: mvn -B -DskipTests clean package
-
+      - run:
+          name: Install Dependencies
+          command: |
+            echo "Running test"
+            mvn -B -DskipTests clean package
   test:
     docker:
       - image: cimg/openjdk:17.0
-      - image: postgres:latest
-        environment:
-          POSTGRES_DB: springmart
-          POSTGRES_USER: justen
-          # POSTGRES_PASSWORD: your_password_here
-
     steps:
       - checkout
-      - maven/test
-        - run:
-            name: Echo Message
-            command: echo "Running Tests"
-        - run:
-            name: Test
-            command: mvn test
-
-  build-and-push:
+      - run:
+          name: Run Unit Tests
+          command: |
+            echo "Running test"
+            mvn -B -DskipTests clean package
+  scan:
     docker:
       - image: cimg/openjdk:17.0
+    environment:
+      IMAGE_NAME: justenmx/springmart-backend
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+          fail-on-issues: false
+          monitor-on-build: true
+          project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
+          severity-threshold: low
+          token-variable: SNYK_TOKEN
+
+  build-and-push:
+    executor: docker/docker
+    environment:
+      IMAGE_NAME: justenmx/springmart-backend
     steps:
       - setup_remote_docker
       - checkout
@@ -58,39 +57,40 @@ jobs:
           image: justenmx/springmart-backend
           tag: <<pipeline.git.tag>>
 
-  scan:
-    docker:
-      - image: cimg/openjdk:17.0
-    environment:
-      IMAGE_NAME: justenmx/springmart-backend
-
-    steps:
-      - checkout
-      - setup_remote_docker
-      - docker/check
-      - run: docker build -t $IMAGE_NAME
-      - snyk/scan:
-          docker-image-name: $IMAGE_NAME
+  # deploy:
+  #   docker:
+  #     - image: cimg/openjdk:17.0
+  #   steps:
+  #     - setup_remote_docker
+  #     - heroku/install
+  #     - checkout
+  #     - run:
+  #         name: Heroku Container Push
+  #         command: |
+  #           heroku container:login
+  #           heroku container:push web -a nutrimateapp
+  #           heroku container:release web -a nutrimateapp
 
 workflows:
-  SpringMartBackendPipeline:
+  ci_flow:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: main
+      - build
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only: main
-      - build-and-push:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-      - scan:
+
+  cicd_flow:
+    jobs:
+      - build
+      - test:
           requires:
             - build
+      - scan:
+          requires:
+            - test
+      - build-and-push:
+          requires:
+            - scan
+      # - deploy:
+      #     requires:
+      #       - build-and-push
