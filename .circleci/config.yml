@@ -1,9 +1,9 @@
 version: 2.1
+
 orbs:
   maven: circleci/maven@1.4.1
   docker: circleci/docker@2.4.0
   snyk: snyk/snyk@2.0.1
-  # heroku: circleci/heroku@2.0.0
 
 jobs:
   build:
@@ -13,10 +13,11 @@ jobs:
         environment:
           POSTGRES_DB: springmart
           POSTGRES_USER: justen
-          POSTGRES_PASSWORD:
+          # POSTGRES_PASSWORD: your_password_here
+
     steps:
       - checkout
-      - maven/install
+      - maven/test
       - run:
           name: Echo Message
           command: echo "Running Build"
@@ -31,10 +32,11 @@ jobs:
         environment:
           POSTGRES_DB: springmart
           POSTGRES_USER: justen
-          POSTGRES_PASSWORD:
+          # POSTGRES_PASSWORD: your_password_here
+
     steps:
       - checkout
-      - maven/install
+      - maven/test
       - run:
           name: Echo Message
           command: echo "Running Tests"
@@ -61,6 +63,7 @@ jobs:
       - image: cimg/openjdk:17.0
     environment:
       IMAGE_NAME: justenmx/springmart-backend
+
     steps:
       - checkout
       - setup_remote_docker
@@ -68,22 +71,6 @@ jobs:
       - run: docker build -t $IMAGE_NAME
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
-
-  # deploy:
-  #   docker:
-  #     - image: cimg/openjdk:17.0
-  #   steps:
-  #     - setup_remote_docker
-  #     - heroku/install
-  #     - docker/pull:
-  #         image: justenmx/springmart-backend
-  #     - run:
-  #         name: Heroku Container Push
-  #         command: |
-  #           heroku container:login
-  #           docker tag your-docker-repo/your-image-name:1.0.0 registry.heroku.com/your-app-name/web
-  #           docker push registry.heroku.com/your-app-name/web
-  #           heroku container:release web -a your-app-name
 
 workflows:
   SpringMartBackendPipeline:
@@ -107,6 +94,3 @@ workflows:
       - scan:
           requires:
             - build
-      # - deploy:
-      #     requires:
-      #       - build-and-push
