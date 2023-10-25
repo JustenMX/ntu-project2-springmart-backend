@@ -1,37 +1,79 @@
 version: 2.1
 
 orbs:
+  docker: circleci/docker@2.4.0
+  snyk: snyk/snyk@2.0.1
   maven: circleci/maven@1.4.1
 
 executors:
-  openjdk11:
+  default-executor:
     docker:
       - image: cimg/openjdk:17.0.8
-      - image: cimg/postgres:16.0
-        environment:
-          POSTGRES_USER: justen
-          POSTGRES_DB: springmart
-          POSTGRES_HOST_AUTH_METHOD: trust
+
+jobs:
+  build: # Define the 'build' job
+    executor: default-executor
+    steps:
+      - checkout # Check out your code from version control
+
+      # Add a step to update the permissions of the mvnw file
+      - run:
+          name: Update mvnw permissions
+          command: chmod +x ./mvnw
+
+      - run:
+          name: Build Spring Boot App
+          # Compile and package your Spring Boot app with Maven
+          command: |
+            ./mvnw clean package -DskipTests
+            mv target/springmart-backend-0.0.1-SNAPSHOT.jar app.jar
+
+  test:
+    executor: default-executor
+    steps:
+      - checkout
+      - run:
+          name: Run Test
+          command: |
+            mvn test
+
+  synk_scan:
+    executor: default-executor
+    environment:
+      IMAGE_NAME: justenmx/springmart-backend
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Update mvnw permissions
+          command: chmod +x ./mvnw
+
+      - run:
+          name: Build Springmart Backend
+          command: ./mvnw clean package -DskipTests
+
+      - run:
+          name: Copy artifact to context
+          # The mv target/pdt_sales-0.0.1-SNAPSHOT.jar app.jar command moves the built artifact (the JAR file) from the target directory to the context directory. This is necessary because the Docker build command will only copy files from the context directory into the image.
+          command: mv target/springmart-backend-0.0.1-SNAPSHOT.jar app.jar
+
+      - run:
+          name: Build Docker image
+          command: docker build -t $IMAGE_NAME .
+
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+          severity-threshold: low
 
 workflows:
-  build-and-deploy:
+  ci_flow:
     jobs:
-      - maven/test:
-          executor: default-executor
-          pre-steps:
-            - run:
-                name: Install dockerize
-                command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-                environment:
-                  DOCKERIZE_VERSION: v0.6.1
-            - run:
-                name: Wait for db
-                command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # - heroku/deploy-via-git:
-      #     force: true # this parameter instructs the push to use a force flag when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
-      #     requires:
-      #       - build-and-test # only run deploy-via-git job if the build job has completed
-      #     filters:
-      #       branches:
-      #         only: /.*-heroku-deploy/ # Delete this line
+      - build
+      - test:
+          requires:
+            - build
+      - synk_scan:
+          requires:
+            - build
