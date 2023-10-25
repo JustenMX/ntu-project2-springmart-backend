@@ -1,11 +1,10 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@2.4.0
-  snyk: snyk/snyk@2.0.1
-  # heroku: circleci/heroku@2.0.0
 
-jobs:
-  build:
+orbs:
+  maven: circleci/maven@1.4.1
+
+executors:
+  openjdk11:
     docker:
       - image: cimg/openjdk:17.0.8
       - image: cimg/postgres:16.0
@@ -13,98 +12,26 @@ jobs:
           POSTGRES_USER: justen
           POSTGRES_DB: springmart
           POSTGRES_HOST_AUTH_METHOD: trust
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: |
-            echo "Installing dependencies"
-            mvn -B -DskipTests clean package
-      - run:
-          name: Wait for Postgres to start
-          command: |
-            echo "Wait for Postgres to start"
-            dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # - run:
-      #     name: Build PostgreSQL Docker Image
-      #     command: docker build -t springmart_postgres .
-
-  test:
-    docker:
-      - image: cimg/openjdk:17.0.8
-    steps:
-      - checkout
-      - run:
-          name: Run Unit Tests
-          command: |
-            echo "Running tests"
-            mvn -B test
-      # - store_test_results:
-      #     path: target/surefire-reports
-
-  scan:
-    docker:
-      - image: cimg/openjdk:17.0.8
-    environment:
-      IMAGE_NAME: justenmx/springmart-backend:latest
-    steps:
-      - checkout
-      - setup_remote_docker
-      - docker/check
-      - run:
-          name: Build Docker Image
-          command: docker build -t $IMAGE_NAME .
-      - snyk/scan:
-          docker-image-name: $IMAGE_NAME
-          fail-on-issues: true
-          monitor-on-build: true
-          project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
-          severity-threshold: low
-          token-variable: SNYK_TOKEN
-
-  build-and-push:
-    executor: docker/docker
-    environment:
-      IMAGE_NAME: justenmx/springmart-backend
-    steps:
-      - setup_remote_docker
-      - checkout
-      - docker/check
-      - docker/build:
-          image: justenmx/springmart-backend
-          tag: <<pipeline.git.tag>>
-      - docker/push:
-          image: justenmx/springmart-backend
-          tag: <<pipeline.git.tag>>
-
-  # deploy:
-  #   docker:
-  #     - image: cimg/openjdk:17.0.8
-  #   steps:
-  #     - setup_remote_docker
-  #     - heroku/install
-  #     - checkout
-  #     - run:
-  #         name: Heroku Container Push
-  #         command: |
-  #           heroku container:login
-  #           heroku container:push web -a springmart-backend
-  #           heroku container:release web -a springmart-backend
 
 workflows:
-  ci_flow:
+  build-and-deploy:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - scan:
-          requires:
-            - test
-      - build-and-push:
-          requires:
-            - scan
-      # - deploy:
+      - maven/test:
+          executor: openjdk:17.0.8
+          pre-steps:
+            - run:
+                name: Install dockerize
+                command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+                environment:
+                  DOCKERIZE_VERSION: v0.6.1
+            - run:
+                name: Wait for db
+                command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # - heroku/deploy-via-git:
+      #     force: true # this parameter instructs the push to use a force flag when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
       #     requires:
-      #       - build-and-push
+      #       - build-and-test # only run deploy-via-git job if the build job has completed
+      #     filters:
+      #       branches:
+      #         only: /.*-heroku-deploy/ # Delete this line
