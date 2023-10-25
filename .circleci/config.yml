@@ -22,9 +22,9 @@ jobs:
             mvn -B -DskipTests clean package
       - run:
           name: Wait for Postgres to start
-          command: | 
-          echo "Wait for Postgres to start"
-          dockerize -wait tcp://localhost:5432 -timeout 1m
+          command: |
+            echo "Wait for Postgres to start"
+            dockerize -wait tcp://localhost:5432 -timeout 1m
 
       # - run:
       #     name: Build PostgreSQL Docker Image
