@@ -26,9 +26,9 @@ jobs:
           command: |
             echo "Wait for Postgres to start"
             dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Build PostgreSQL Docker Image
-          command: docker build -t springmart_postgres .
+      # - run:
+      #     name: Build PostgreSQL Docker Image
+      #     command: docker build -t springmart_postgres .
 
   test:
     docker:

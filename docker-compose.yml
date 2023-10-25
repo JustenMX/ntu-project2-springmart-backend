@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  java_app:
+    container_name: springmart-backend
+    image: justenmx/springmart-backend
+    build: .
+    ports:
+      - 9090:9090
+    environment:
+      - DATABASE_URL=jdbc:postgresql://localhost:5432/springmart
+      - DATABASE_USERNAME=justen
+      # - DATABASE_PASSWORD=
+    depends_on:
+      - psql-db
+
+  psql-db:
+    container_name: psql-db
+    image: postgres:16
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: justen
+      # POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: springmart
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
