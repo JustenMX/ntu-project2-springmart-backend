@@ -6,7 +6,7 @@ orbs:
 executors:
   openjdk11:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:17.0.8
       - image: cimg/postgres:16.0
         environment:
           POSTGRES_USER: justen
@@ -17,7 +17,7 @@ workflows:
   build-and-deploy:
     jobs:
       - maven/test:
-          executor: openjdk11
+          executor: default-executor
           pre-steps:
             - run:
                 name: Install dockerize
