@@ -1,8 +1,9 @@
 version: 2.1
 orbs:
   docker: circleci/docker@2.4.0
-  # snyk: snyk/snyk@2.0.1
+  snyk: snyk/snyk@2.0.1
   # heroku: circleci/heroku@2.0.0
+
 jobs:
   build:
     docker:
@@ -12,8 +13,9 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            echo "Running test"
-            mvn -B -DskipTests clean package
+            echo "Installing dependencies"
+            mvn -B clean package
+
   test:
     docker:
       - image: cimg/openjdk:17.0
@@ -22,25 +24,30 @@ jobs:
       - run:
           name: Run Unit Tests
           command: |
-            echo "Running test"
-            mvn -B -DskipTests clean package
-  # scan:
-  #   docker:
-  #     - image: cimg/openjdk:17.0
-  #   environment:
-  #     IMAGE_NAME: justenmx/springmart-backend:latest
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker
-  #     - docker/check
-  #     - run: docker build -t $IMAGE_NAME .
-  #     - snyk/scan:
-  #         docker-image-name: $IMAGE_NAME
-  #         fail-on-issues: false
-  #         monitor-on-build: true
-  #         project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
-  #         severity-threshold: low
-  #         token-variable: SNYK_TOKEN
+            echo "Running tests"
+            mvn -B test
+      - store_test_results:
+          path: target/surefire-reports
+
+  scan:
+    docker:
+      - image: cimg/openjdk:17.0
+    environment:
+      IMAGE_NAME: justenmx/springmart-backend:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - run:
+          name: Build Docker Image
+          command: docker build -t $IMAGE_NAME .
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+          fail-on-issues: true
+          monitor-on-build: true
+          project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
+          severity-threshold: low
+          token-variable: SNYK_TOKEN
 
   build-and-push:
     executor: docker/docker
@@ -68,29 +75,22 @@ jobs:
   #         name: Heroku Container Push
   #         command: |
   #           heroku container:login
-  #           heroku container:push web -a nutrimateapp
-  #           heroku container:release web -a nutrimateapp
+  #           heroku container:push web -a springmart-backend
+  #           heroku container:release web -a springmart-backend
 
 workflows:
-  # ci_flow:
-  #   jobs:
-  #     - build
-  #     - test:
-  #         requires:
-  #           - build
-
-  cicd_flow:
+  ci_flow:
     jobs:
       - build
       - test:
           requires:
             - build
-      # - scan:
-      #     requires:
-      #       - test
-      - build-and-push:
+      - scan:
           requires:
             - test
+      - build-and-push:
+          requires:
+            - scan
       # - deploy:
       #     requires:
       #       - build-and-push
