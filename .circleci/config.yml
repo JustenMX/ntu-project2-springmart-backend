@@ -7,8 +7,12 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:17.0
-      # - image: postgres:16.0
+      - image: cimg/openjdk:17.0.8
+      - image: cimg/postgres:16.0
+        environment:
+          POSTGRES_USER: justen
+          POSTGRES_DB: springmart
+          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - run:
@@ -16,13 +20,19 @@ jobs:
           command: |
             echo "Installing dependencies"
             mvn -B -DskipTests clean package
+      - run:
+          name: Wait for Postgres to start
+          command: | 
+          echo "Wait for Postgres to start"
+          dockerize -wait tcp://localhost:5432 -timeout 1m
+
       # - run:
       #     name: Build PostgreSQL Docker Image
       #     command: docker build -t springmart_postgres .
 
   test:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:17.0.8
     steps:
       - checkout
       - run:
@@ -35,7 +45,7 @@ jobs:
 
   scan:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:17.0.8
     environment:
       IMAGE_NAME: justenmx/springmart-backend:latest
     steps:
@@ -70,7 +80,7 @@ jobs:
 
   # deploy:
   #   docker:
-  #     - image: cimg/openjdk:17.0
+  #     - image: cimg/openjdk:17.0.8
   #   steps:
   #     - setup_remote_docker
   #     - heroku/install
