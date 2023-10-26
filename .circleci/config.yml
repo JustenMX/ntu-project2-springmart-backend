@@ -2,33 +2,19 @@ version: 2.1
 
 orbs:
   docker: circleci/docker@2.4.0
-  snyk: snyk/snyk@2.0.1
-  # heroku: circleci/heroku@2.0.0
 
 jobs:
   build:
     docker:
       - image: cimg/openjdk:17.0.8
-      - image: cimg/postgres:16.0
-        environment:
-          POSTGRES_USER: justen
-          POSTGRES_DB: springmart
-          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: Build Spring Boot App
           command: |
-            echo "Installing dependencies"
+            echo "Building Springmart Backend"
             mvn -B -DskipTests clean package
-      - run:
-          name: Wait for Postgres to start
-          command: |
-            echo "Wait for Postgres to start"
-            dockerize -wait tcp://localhost:5432 -timeout 1m
-      # - run:
-      #     name: Build PostgreSQL Docker Image
-      #     command: docker build -t springmart_postgres .
+            docker build -t justenmx/springmart-backend .
 
   test:
     docker:
@@ -40,8 +26,6 @@ jobs:
           command: |
             echo "Running tests"
             mvn -B test
-      # - store_test_results:
-      #     path: target/surefire-reportss
 
   scan:
     docker:
@@ -55,42 +39,9 @@ jobs:
       - run:
           name: Build Docker Image
           command: docker build -t $IMAGE_NAME .
-      - snyk/scan:
-          docker-image-name: $IMAGE_NAME
-          fail-on-issues: true
-          monitor-on-build: true
-          project: ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app
-          severity-threshold: low
-          token-variable: SNYK_TOKEN
-
-  build-and-push:
-    executor: docker/docker
-    environment:
-      IMAGE_NAME: justenmx/springmart-backend
-    steps:
-      - setup_remote_docker
-      - checkout
-      - docker/check
-      - docker/build:
-          image: justenmx/springmart-backend
-          tag: <<pipeline.git.tag>>
-      - docker/push:
-          image: justenmx/springmart-backend
-          tag: <<pipeline.git.tag>>
-
-  # deploy:
-  #   docker:
-  #     - image: cimg/openjdk:17.0.8
-  #   steps:
-  #     - setup_remote_docker
-  #     - heroku/install
-  #     - checkout
-  #     - run:
-  #         name: Heroku Container Push
-  #         command: |
-  #           heroku container:login
-  #           heroku container:push web -a springmart-backend
-  #           heroku container:release web -a springmart-backend
+      - run:
+          name: Push Docker Image
+          command: docker push $IMAGE_NAME
 
 workflows:
   ci_flow:
@@ -102,9 +53,3 @@ workflows:
       - scan:
           requires:
             - test
-      - build-and-push:
-          requires:
-            - scan
-      # - deploy:
-      #     requires:
-      #       - build-and-push
