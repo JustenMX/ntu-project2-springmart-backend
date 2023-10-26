@@ -8,7 +8,7 @@ services:
     ports:
       - 9090:9090
     environment:
-      - DATABASE_URL=jdbc:postgresql://localhost:5432/springmart
+      - DATABASE_URL=jdbc:postgresql://psql-db:5432/springmart
       - DATABASE_USERNAME=justen
       # - DATABASE_PASSWORD=
     depends_on:
@@ -22,7 +22,7 @@ services:
       - 5432:5432
     environment:
       POSTGRES_USER: justen
-      # POSTGRES_PASSWORD: postgres
+      # POSTGRES_PASSWORD: 
       POSTGRES_DB: springmart
     volumes:
       - pgdata:/var/lib/postgresql/data
