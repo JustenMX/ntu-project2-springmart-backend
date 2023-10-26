@@ -11,7 +11,7 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-          name: Build Spring Boot App
+          name: Build Springmart Backend
           command: |
             echo "Building Springmart Backend"
             mvn -B -DskipTests clean package
