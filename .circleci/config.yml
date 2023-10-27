@@ -89,6 +89,15 @@ workflows:
             branches:
               only: main
 
+      - build-and-push:
+          requires:
+            - build
+            filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+
       # - test:
       #     requires:
       #       - build
@@ -96,12 +105,14 @@ workflows:
       #       branches:
       #         only: main
 
-      - build-and-push:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+      # - build-and-push:
+      #     requires:
+      #       - build
+      #       filters:
+      #       tags:
+      #         only: /^v.*/
+      #       branches:
+      #         ignore: /.*/
 
       # - scan:
       #     requires:
