@@ -9,6 +9,7 @@ jobs:
       - image: cimg/openjdk:17.0.8
     steps:
       - setup_remote_docker
+      - checkout
       - run:
           name: Checkout Private Repo
           command: |
