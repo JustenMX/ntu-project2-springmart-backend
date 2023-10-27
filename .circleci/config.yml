@@ -92,7 +92,7 @@ workflows:
       - build-and-push:
           requires:
             - build
-            filters:
+          filters:
             tags:
               only: /^v.*/
             branches:
