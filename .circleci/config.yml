@@ -46,6 +46,8 @@ jobs:
           command: |
             echo "Running tests"
             mvn -B test
+      - store_test_results:
+          path: target/surefire-reports
 
   scan:
     docker:
@@ -64,7 +66,7 @@ jobs:
           command: docker push $IMAGE_NAME
 
 workflows:
-  ci_flow:
+  springmart_backend_ci_flow:
     jobs:
       - build
       - test:
