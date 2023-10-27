@@ -9,7 +9,11 @@ jobs:
       - image: cimg/openjdk:17.0.8
     steps:
       - setup_remote_docker
-      - checkout
+      - run:
+          name: Checkout Private Repo
+          command: |
+            echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+            git clone git@github.com:JustenMX/ntu-project2-springmart-backend.git
       - run:
           name: Build Springmart Backend
           command: |
@@ -20,12 +24,12 @@ jobs:
   test:
     docker:
       - image: cimg/openjdk:17.0.8
-    environment:
-      DB_HOST: psql-db
-      DB_PORT: 5432
-      DB_NAME: springmart
-      DB_USER: justen
-      DB_PASSWORD:
+    # environment:
+    #   DB_HOST: psql-db
+    #   DB_PORT: 5432
+    #   DB_NAME: springmart
+    #   DB_USER: justen
+    #   DB_PASSWORD: OzCq4KoMRSzgvGAn
     steps:
       - checkout
       - run:
