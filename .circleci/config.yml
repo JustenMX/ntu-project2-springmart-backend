@@ -22,32 +22,32 @@ jobs:
             mvn -B -DskipTests clean package
             docker build -t justenmx/springmart-backend .
 
-  # test:
-  #   docker:
-  #     - image: cimg/openjdk:17.0.8
-  #   # environment:
-  #   #   DB_HOST: psql-db
-  #   #   DB_PORT: 5432
-  #   #   DB_NAME: springmart
-  #   #   DB_USER: justen
-  #   #   DB_PASSWORD: OzCq4KoMRSzgvGAn
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Debug Connection
-  #         command: |
-  #           echo "Database Host: $DB_HOST"
-  #           echo "Database Port: $DB_PORT"
-  #           echo "Database Name: $DB_NAME"
-  #           echo "Database User: $DB_USER"
-  #           echo "Database Password: $DB_PASSWORD"
-  #     - run:
-  #         name: Run Unit Tests
-  #         command: |
-  #           echo "Running tests"
-  #           mvn -B test
-  #     - store_test_results:
-  #         path: target/surefire-reports
+  test:
+    docker:
+      - image: cimg/openjdk:17.0.8
+    environment:
+      DB_HOST: psql-db
+      DB_PORT: 5432
+      DB_NAME: springmart
+      DB_USER: justen
+      DB_PASSWORD: OzCq4KoMRSzgvGAn
+    steps:
+      - checkout
+      - run:
+          name: Debug Connection
+          command: |
+            echo "Database Host: $DB_HOST"
+            echo "Database Port: $DB_PORT"
+            echo "Database Name: $DB_NAME"
+            echo "Database User: $DB_USER"
+            echo "Database Password: $DB_PASSWORD"
+      - run:
+          name: Run Unit Tests
+          command: |
+            echo "Running tests"
+            mvn -B test
+      - store_test_results:
+          path: target/surefire-reports
 
   scan:
     docker:
@@ -69,9 +69,9 @@ workflows:
   springmart_backend_ci_flow:
     jobs:
       - build
-      # - test:
-      #     requires:
-      #       - build
-      - scan:
+      - test:
           requires:
             - build
+      - scan:
+          requires:
+            - test
