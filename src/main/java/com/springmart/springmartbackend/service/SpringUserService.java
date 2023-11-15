@@ -9,9 +9,9 @@ import com.springmart.springmartbackend.entity.SpringUser;
 public interface SpringUserService {
 
     /**
-     * CREATE USER
      * 
-     * @param userDto
+     * @param springUserRegistration
+     * @return
      */
     SpringUser registerUser(SpringUserRegistration springUserRegistration);
 
